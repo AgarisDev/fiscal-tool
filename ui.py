@@ -10,7 +10,7 @@ def iniciar_interfaz():
 
     ventana = ctk.CTk()
     ventana.geometry("1000x500")
-    ventana.title("Calculadora de Ingreso Futuro")
+    ventana.title("Herramienta de proyección fiscal")
 
     frame_izq = ctk.CTkFrame(ventana)
     frame_izq.pack(side="left", fill="both", expand=True, padx=20, pady=20)
@@ -74,6 +74,7 @@ def iniciar_interfaz():
 
     label_img = ctk.CTkLabel(frame_der, image=photo, text="")
     label_img.image = photo  # Evita que la imagen se destruya
-    label_img.pack(pady=30)
+    label_img.place(relx=0.5, rely=0.5, anchor="center")
+    label_img.pack(pady=150, anchor = "center")
 
     ventana.mainloop()
