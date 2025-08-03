@@ -1,0 +1,618 @@
+[
+    {
+        "NOMBRE": "AGAVE BLUEK COMERCIO S.A DE C.V",
+        "DF": 22817227.68,
+        "IF": 11065835.44,
+        "CO": 0.0001,
+        "CA": "0.3400"
+    },
+    {
+        "NOMBRE": "PROYECTOS Y DESAROLLOS AGEIT",
+        "DF": 2772843.09,
+        "IF": 903115.35,
+        "CO": 0.0053,
+        "CA": "0.4065"
+    },
+    {
+        "NOMBRE": "AGRELA DESTILADORA AGAVERA, S.A. DE C.V",
+        "DF": 3878552.92,
+        "IF": -127374709.06,
+        "CO": 0.0105,
+        "CA": "0.9713"
+    },
+    {
+        "NOMBRE": "AGRO EXPORTADORA FISTRA, S.A. DE C.V",
+        "DF": 32264104.65,
+        "IF": -216961456.29,
+        "CO": 0.0157,
+        "CA": "0.8858"
+    },
+    {
+        "NOMBRE": "GRUPO AGROMIRAL",
+        "DF": 9010479.14,
+        "IF": 12470949.0,
+        "CO": 0.0209,
+        "CA": "-0.5183"
+    },
+    {
+        "NOMBRE": "ALCANCE GLOBAL SERVICIOS ADMINISTRATIVOS SA DE CV",
+        "DF": 100861367.64,
+        "IF": 197243485.97,
+        "CO": 0.0261,
+        "CA": "-9.2032"
+    },
+    {
+        "NOMBRE": "ANALISIS Y ESTUDIOS ARKA, S.A. DE C.V",
+        "DF": 0.0,
+        "IF": 0.0,
+        "CO": 0.0313,
+        "CA": "0.0000"
+    },
+    {
+        "NOMBRE": "ASESORÖA INTELIGENTE DE OCC",
+        "DF": 113.25,
+        "IF": -2022049.72,
+        "CO": 0.0365,
+        "CA": "0.9999"
+    },
+    {
+        "NOMBRE": "ATGINVA SA DE CV",
+        "DF": 0.0,
+        "IF": 0.0,
+        "CO": 0.0417,
+        "CA": "0.0000"
+    },
+    {
+        "NOMBRE": "AWARE CONSULTORES",
+        "DF": 41348.14,
+        "IF": 77327.61,
+        "CO": 0.0469,
+        "CA": "-3.3810"
+    },
+    {
+        "NOMBRE": "CONSTRUCTORES BACHMEIER",
+        "DF": 62810022.45,
+        "IF": 80438263.62,
+        "CO": 0.0521,
+        "CA": "-0.2059"
+    },
+    {
+        "NOMBRE": "CENTRALIZACION COMERCIAL BANBALI",
+        "DF": 40225399.33,
+        "IF": 44395956.03,
+        "CO": 0.0573,
+        "CA": "0.0176"
+    },
+    {
+        "NOMBRE": "BASA CONSULTORIA FINANCIERA",
+        "DF": 2575648.32,
+        "IF": -2928495.29,
+        "CO": 0.0625,
+        "CA": "0.6942"
+    },
+    {
+        "NOMBRE": "MAQUILADORA COMERCIAL BIUE",
+        "DF": 3038046.34,
+        "IF": 2971781.31,
+        "CO": 0.0677,
+        "CA": "0.1431"
+    },
+    {
+        "NOMBRE": "BOLLATE DESTILADORA AGAVERA",
+        "DF": 141228049.24,
+        "IF": -12991436.25,
+        "CO": 0.0729,
+        "CA": "0.5554"
+    },
+    {
+        "NOMBRE": "APOYO COMERCIAL BRAEMAR",
+        "DF": 100995825.43,
+        "IF": 96983501.13,
+        "CO": 0.0781,
+        "CA": "0.1730"
+    },
+    {
+        "NOMBRE": "PRODUCTORA BREDA",
+        "DF": 99442182.28,
+        "IF": 100488315.77,
+        "CO": 0.0833,
+        "CA": "0.1462"
+    },
+    {
+        "NOMBRE": "BRIVA GARDEN MEXICO, S.A. DE C.V",
+        "DF": 23343270.19,
+        "IF": -11293930.03,
+        "CO": 0.0885,
+        "CA": "0.6266"
+    },
+    {
+        "NOMBRE": "BROTH AVAGE MIL SA DE CV",
+        "DF": 2156792.38,
+        "IF": -75334088.97,
+        "CO": 0.0937,
+        "CA": "0.9731"
+    },
+    {
+        "NOMBRE": "COFIDUE COMERCIOS Y SERVICIOS",
+        "DF": 3095810.17,
+        "IF": -3223725.14,
+        "CO": 0.0989,
+        "CA": "0.6933"
+    },
+    {
+        "NOMBRE": "COLPORTEUR",
+        "DF": 58769827.12,
+        "IF": 50732807.9,
+        "CO": 0.1041,
+        "CA": "0.2696"
+    },
+    {
+        "NOMBRE": "SERVICIOS COLTRANE",
+        "DF": 74296097.26,
+        "IF": 165080698.81,
+        "CO": 0.1093,
+        "CA": "-41.5616"
+    },
+    {
+        "NOMBRE": "COMERCIALIZACION INTERNACIONAL TELXALT SA DE CV",
+        "DF": 0.0,
+        "IF": 0.0,
+        "CO": 0.0001,
+        "CA": "0.0000"
+    },
+    {
+        "NOMBRE": "COMERCIALIZADORA AGAVERA PALMAZUL, S.A. DE C.V",
+        "DF": 15258798.28,
+        "IF": -83251295.48,
+        "CO": 0.0053,
+        "CA": "0.8661"
+    },
+    {
+        "NOMBRE": "COMERCIALIZADORA COSIORRA SA DE CV",
+        "DF": 0.0,
+        "IF": -344524.89,
+        "CO": 0.0105,
+        "CA": "1.0000"
+    },
+    {
+        "NOMBRE": "COMERCIALIZADORA GUTENDROLL, S.A. DE C.V",
+        "DF": 2767982.48,
+        "IF": -30475833.15,
+        "CO": 0.0157,
+        "CA": "0.9233"
+    },
+    {
+        "NOMBRE": "CENTRALIZACION COMERCIAL COMPALIE",
+        "DF": 22293328.48,
+        "IF": -2024954.32,
+        "CO": 0.0209,
+        "CA": "0.5313"
+    },
+    {
+        "NOMBRE": "CONCRETAXTE DE MXICO SA DE CV",
+        "DF": 140309767.81,
+        "IF": 132887665.06,
+        "CO": 0.0261,
+        "CA": "0.0962"
+    },
+    {
+        "NOMBRE": "CORAZON DE ALCACHOFA ANDARES",
+        "DF": 94836.75,
+        "IF": 191353.83,
+        "CO": 0.0313,
+        "CA": "-20.3199"
+    },
+    {
+        "NOMBRE": "CRESTEGRA COMERCIOS",
+        "DF": 35444406.97,
+        "IF": -2085696.65,
+        "CO": 0.0365,
+        "CA": "0.5315"
+    },
+    {
+        "NOMBRE": "CUBATA AGROSERVICIOS SA DE CV",
+        "DF": 62337965.49,
+        "IF": 95094710.68,
+        "CO": 0.0417,
+        "CA": "-0.7808"
+    },
+    {
+        "NOMBRE": "COMMERCIAL DANTHRI",
+        "DF": 112185866.27,
+        "IF": 140076605.5,
+        "CO": 0.0469,
+        "CA": "-0.1767"
+    },
+    {
+        "NOMBRE": "DISEÑOS MAFRIH SA DE CV",
+        "DF": 7666954.11,
+        "IF": -5293600.93,
+        "CO": 0.0521,
+        "CA": "0.6429"
+    },
+    {
+        "NOMBRE": "OPERADORA DODOURO",
+        "DF": 36238857.71,
+        "IF": 51419154.93,
+        "CO": 0.0573,
+        "CA": "-0.4231"
+    },
+    {
+        "NOMBRE": "GRUPO AGRO INDUSTRIAL DRIED",
+        "DF": 8594414.79,
+        "IF": 5773439.35,
+        "CO": 0.0625,
+        "CA": "0.3158"
+    },
+    {
+        "NOMBRE": "VIGILANCIA Y SEGURIDAD PRIVADA EBRILI",
+        "DF": 18220958.18,
+        "IF": 7293151.0,
+        "CO": 0.0677,
+        "CA": "0.4269"
+    },
+    {
+        "NOMBRE": "ESTUDIO Y CONSTRUCCION GOUIMEBEUT SA DE CV",
+        "DF": 41896441.83,
+        "IF": 58644358.86,
+        "CO": 0.0729,
+        "CA": "-0.3201"
+    },
+    {
+        "NOMBRE": "ESTUDIOS EMPRESARIALES BAK, S.A. DE C.V",
+        "DF": 12178277.56,
+        "IF": -24397771.03,
+        "CO": 0.0781,
+        "CA": "0.7604"
+    },
+    {
+        "NOMBRE": "EVVAI CORPORATIVO SC",
+        "DF": 77273254.34,
+        "IF": 335116.29,
+        "CO": 0.0833,
+        "CA": "0.5407"
+    },
+    {
+        "NOMBRE": "FOCUS VENMAR MARKETING",
+        "DF": 99857365.77,
+        "IF": 83763508.5,
+        "CO": 0.0885,
+        "CA": "0.2622"
+    },
+    {
+        "NOMBRE": "FONTEPASA MEXICO SA DE CV",
+        "DF": 23649493.7,
+        "IF": 28314419.78,
+        "CO": 0.0937,
+        "CA": "0.0094"
+    },
+    {
+        "NOMBRE": "DESARROLLADORA EN INNOVACION GANTRIMO",
+        "DF": 145096320.77,
+        "IF": 179533877.59,
+        "CO": 0.0989,
+        "CA": "-0.0182"
+    },
+    {
+        "NOMBRE": "GASTHOF BLINDAJE EMPRESARIAL, S.A. DE C.V",
+        "DF": 250862.07,
+        "IF": -156599.02,
+        "CO": 0.1041,
+        "CA": "0.6499"
+    },
+    {
+        "NOMBRE": "HAIBERGH SC",
+        "DF": 30665238.04,
+        "IF": 35631835.79,
+        "CO": 0.1093,
+        "CA": "0.0770"
+    },
+    {
+        "NOMBRE": "HEMELE SAPI",
+        "DF": 2154307.96,
+        "IF": -66748753.0,
+        "CO": 0.0001,
+        "CA": "0.9697"
+    },
+    {
+        "NOMBRE": "HERTER PRO-SALUD SA DE CV",
+        "DF": 74946046.48,
+        "IF": -113337493.07,
+        "CO": 0.0053,
+        "CA": "0.7161"
+    },
+    {
+        "NOMBRE": "HUMANCITY DESARROLLO INMOBILIARIO",
+        "DF": 0.0,
+        "IF": -40697628.22,
+        "CO": 0.0105,
+        "CA": "1.0000"
+    },
+    {
+        "NOMBRE": "IDEKA MARKETING GROUP, S.A. DE C.V",
+        "DF": 15533.81,
+        "IF": 31563.16,
+        "CO": 0.0157,
+        "CA": "0.0000"
+    },
+    {
+        "NOMBRE": "IMPORTACIONES CAMINO REAL MX, S.A. DE C.V",
+        "DF": 7804844.85,
+        "IF": -51389265.95,
+        "CO": 0.0209,
+        "CA": "0.8841"
+    },
+    {
+        "NOMBRE": "INRUCREA INTEGRAL SA DE CV",
+        "DF": 48810373.23,
+        "IF": -82322777.67,
+        "CO": 0.0261,
+        "CA": "0.7326"
+    },
+    {
+        "NOMBRE": "JOSANRI SERVICIOS CORPORATIVOS INTEGRADOS SA DE CV",
+        "DF": 0.0,
+        "IF": 0.0,
+        "CO": 0.0313,
+        "CA": "0.0000"
+    },
+    {
+        "NOMBRE": "KAMAFITZ_MULTIFUNCIONAL SA_DE_CV",
+        "DF": 531704.78,
+        "IF": 952090.11,
+        "CO": 0.0365,
+        "CA": "-2.5072"
+    },
+    {
+        "NOMBRE": "SERVICIOS INDUSTRIALES DE CAFETERIA KANTE",
+        "DF": 34086306.07,
+        "IF": 7885865.55,
+        "CO": 0.0417,
+        "CA": "0.4611"
+    },
+    {
+        "NOMBRE": "KARAGIANNIS INTERNATIONAL TRADE AND FAIR COMPANY",
+        "DF": 42052093.8,
+        "IF": 45521465.63,
+        "CO": 0.0469,
+        "CA": "0.0157"
+    },
+    {
+        "NOMBRE": "KUGNOTT COMERCIO GLOBAL SA DE CV",
+        "DF": 0.0,
+        "IF": 0.0,
+        "CO": 0.0521,
+        "CA": "0.0000"
+    },
+    {
+        "NOMBRE": "LEVANTEX IMPORTADORA SA DE CV",
+        "DF": 27777655.43,
+        "IF": 26063360.87,
+        "CO": 0.0573,
+        "CA": "0.1549"
+    },
+    {
+        "NOMBRE": "AGRO EXPORTADORA MAIFEN",
+        "DF": 230435.06,
+        "IF": -7954688.33,
+        "CO": 0.0625,
+        "CA": "0.9727"
+    },
+    {
+        "NOMBRE": "MALET GRUPO INMOBILIARIO, S.A. DE C.V",
+        "DF": 1060343.62,
+        "IF": 1727519.85,
+        "CO": 0.0677,
+        "CA": "-0.9379"
+    },
+    {
+        "NOMBRE": "MARKETING GLOBAL JINGLE",
+        "DF": 1500015.57,
+        "IF": 1942561.47,
+        "CO": 0.0729,
+        "CA": "-0.1598"
+    },
+    {
+        "NOMBRE": "MARKETING WHISTRI SA DE CV",
+        "DF": 0.0,
+        "IF": -2994729.94,
+        "CO": 0.0781,
+        "CA": "1.0000"
+    },
+    {
+        "NOMBRE": "MEXOPTIC",
+        "DF": 28041057.69,
+        "IF": 48699274.32,
+        "CO": 0.0833,
+        "CA": "-1.2471"
+    },
+    {
+        "NOMBRE": "DESARROLLADORA EN INNOVACION MILAIRE",
+        "DF": 92089686.99,
+        "IF": 100745770.24,
+        "CO": 0.0885,
+        "CA": "0.0911"
+    },
+    {
+        "NOMBRE": "MOAL COMEX",
+        "DF": 0.0,
+        "IF": -344827.59,
+        "CO": 0.0937,
+        "CA": "1.0000"
+    },
+    {
+        "NOMBRE": "NAMBA LUXURY LIVING, S.A. DE C.V",
+        "DF": 20023.11,
+        "IF": 39675.66,
+        "CO": 0.0989,
+        "CA": "-3.2014"
+    },
+    {
+        "NOMBRE": "NOVOTI GRUPO ASESOR",
+        "DF": 1988253.33,
+        "IF": 2729002.43,
+        "CO": 0.1041,
+        "CA": "-0.1630"
+    },
+    {
+        "NOMBRE": "OBJETO AUDITOR SA DE CV",
+        "DF": 58544914.98,
+        "IF": 70511391.22,
+        "CO": 0.1093,
+        "CA": "0.0394"
+    },
+    {
+        "NOMBRE": "OLVIL MARKETING CENTER",
+        "DF": 40227073.39,
+        "IF": 35548611.05,
+        "CO": 0.0001,
+        "CA": "0.1043"
+    },
+    {
+        "NOMBRE": "RESTAURANTE Y CAFETERIA PAPASGAN",
+        "DF": 30714055.18,
+        "IF": 61755414.05,
+        "CO": 0.0053,
+        "CA": "0.0000"
+    },
+    {
+        "NOMBRE": "PHIPENDROL PHARM",
+        "DF": 2068251.04,
+        "IF": 1060324.02,
+        "CO": 0.0105,
+        "CA": "0.3371"
+    },
+    {
+        "NOMBRE": "POMEX PONDERA SA DE CV",
+        "DF": 4318553.34,
+        "IF": -29101874.59,
+        "CO": 0.0157,
+        "CA": "0.8860"
+    },
+    {
+        "NOMBRE": "PRAXINSU COMERCIALIZADORA MEDICA",
+        "DF": 62724975.86,
+        "IF": 64938949.66,
+        "CO": 0.0209,
+        "CA": "0.0073"
+    },
+    {
+        "NOMBRE": "PROYECTOS DE DESARROLLO PERSONAL Y DE GRUPO QAS SA DE CV",
+        "DF": 0.0,
+        "IF": 0.0,
+        "CO": 0.0261,
+        "CA": "0.0000"
+    },
+    {
+        "NOMBRE": "PUBLIDIRECTO ESTRATEGIAS SA DE CV",
+        "DF": 30987358.11,
+        "IF": 31142642.78,
+        "CO": 0.0313,
+        "CA": "0.0563"
+    },
+    {
+        "NOMBRE": "REDFORTEX BAJIO SA DE CV",
+        "DF": 36216704.28,
+        "IF": -187004677.39,
+        "CO": 0.0365,
+        "CA": "0.8619"
+    },
+    {
+        "NOMBRE": "RISTEGRA MEXICO SA DE CV",
+        "DF": 39725167.88,
+        "IF": 39479581.94,
+        "CO": 0.0417,
+        "CA": "0.0853"
+    },
+    {
+        "NOMBRE": "SAFE OCC VR S.A DE C.V",
+        "DF": 36547664.5,
+        "IF": 35196836.53,
+        "CO": 0.0469,
+        "CA": "0.1192"
+    },
+    {
+        "NOMBRE": "STRONER VIGILANCIA EMPRESARIAL, S.A. DE C.V",
+        "DF": 213087.93,
+        "IF": 331900.02,
+        "CO": 0.0521,
+        "CA": "-0.8104"
+    },
+    {
+        "NOMBRE": "TERMANSE DESARROLLO HUMANO, S.A DE C.V",
+        "DF": 82698.03,
+        "IF": 168949.31,
+        "CO": 0.0573,
+        "CA": "-11.7228"
+    },
+    {
+        "NOMBRE": "TRANS&CO LOGISTICA DE OCCIDENTE",
+        "DF": 91949853.35,
+        "IF": 87604449.1,
+        "CO": 0.0625,
+        "CA": "0.1530"
+    },
+    {
+        "NOMBRE": "TRATO LEGAL CONSULTING, S.A. DE C.V",
+        "DF": 12716584.1,
+        "IF": 9035888.75,
+        "CO": 0.0677,
+        "CA": "0.3030"
+    },
+    {
+        "NOMBRE": "CONSTRUCTORA VALMUN",
+        "DF": 13175390.5,
+        "IF": 7610842.01,
+        "CO": 0.0729,
+        "CA": "0.3669"
+    },
+    {
+        "NOMBRE": "VALNYA DISE¥OS, S.A. DE C.V",
+        "DF": 53434056.39,
+        "IF": 63049371.61,
+        "CO": 0.0781,
+        "CA": "-0.0106"
+    },
+    {
+        "NOMBRE": "VALYRRYN TIERRA DE AGAVE SA DE CV",
+        "DF": 39362.2,
+        "IF": -6069461.91,
+        "CO": 0.0833,
+        "CA": "0.9936"
+    },
+    {
+        "NOMBRE": "WAPAMOIWA SAPI DEÿCV",
+        "DF": 587597.02,
+        "IF": -34848893.65,
+        "CO": 0.0885,
+        "CA": "0.9837"
+    },
+    {
+        "NOMBRE": "PRESTADORA DE SERVICIOS WIETHOFF",
+        "DF": 108678181.54,
+        "IF": 96626643.99,
+        "CO": 0.0937,
+        "CA": "0.2411"
+    },
+    {
+        "NOMBRE": "YHNABET MERCADEO SA DE CV",
+        "DF": 36079103.66,
+        "IF": -145463290.84,
+        "CO": 0.0989,
+        "CA": "0.8400"
+    },
+    {
+        "NOMBRE": "ZANLAI INDUSTRIAS SA DE CV",
+        "DF": 82242631.92,
+        "IF": 97987801.33,
+        "CO": 0.1041,
+        "CA": "0.0393"
+    },
+    {
+        "NOMBRE": "ZENTYCSA SERVICIOS SA DE CV",
+        "DF": 61408255.27,
+        "IF": -140049479.26,
+        "CO": 0.1093,
+        "CA": "0.7791"
+    }
+]
