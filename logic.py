@@ -95,13 +95,15 @@ def cargar_csv_y_generar_pdf():
                 ia = row.get("IA", 0)
                 ua = row.get("UA", 0)
                 ca_val = f"{ua / ia:.4f}" if ia != 0 else "0.0000"
+                meses_restantes = 12 - row.get("Mes",0) 
 
                 resultados.append({
                     "NOMBRE": nombre,
                     "DF": df_val,
                     "IF": if_val,
                     "CO": co_val,
-                    "CA": ca_val
+                    "CA": ca_val,
+                    "MES": meses_restantes
                 })
             except Exception as e:
                 print(f"Error exportando a JSON fila {nombre}: {e}")

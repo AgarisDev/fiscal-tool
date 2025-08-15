@@ -1,9 +1,11 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
 from logic import calcular_ingreso_futuro_desde_inputs, cargar_csv_y_generar_pdf
+from forecast_logic import forecast_proporcional
 import json
 import os
-import tkinter as tk  # Para Listbox y scrollbar
+import tkinter as tk
+from tkinter import filedialog
 
 class SearchableDropdown(ctk.CTkFrame):
     def __init__(self, master, values, *args, **kwargs):
@@ -15,7 +17,6 @@ class SearchableDropdown(ctk.CTkFrame):
         self.entry.pack(fill="x", padx=5, pady=(5,0))
         self.entry.bind("<KeyRelease>", self.on_keyrelease)
 
-        # Frame para listbox + scrollbar
         listbox_frame = ctk.CTkFrame(self)
         listbox_frame.pack(fill="x", padx=5, pady=(0,5), expand=False)
 
@@ -26,8 +27,8 @@ class SearchableDropdown(ctk.CTkFrame):
             listbox_frame,
             height=6,
             yscrollcommand=self.scrollbar.set,
-            bg="#1F1F1F",       # fondo oscuro
-            fg="white",          # texto blanco
+            bg="#1F1F1F",
+            fg="white",
             selectbackground="#3A7FF6",
             activestyle="none",
             highlightthickness=0,
@@ -66,20 +67,17 @@ class SearchableDropdown(ctk.CTkFrame):
     def enable(self):
         self.entry.configure(state="normal")
         self.listbox.configure(state="normal")
-        # No tocar scrollbar
 
     def disable(self):
         self.entry.configure(state="disabled")
         self.listbox.configure(state="disabled")
-        # No tocar scrollbar
-
 
 def iniciar_interfaz(debug: bool = False):
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("blue")
 
     ventana = ctk.CTk()
-    ventana.geometry("1000x650")
+    ventana.geometry("1000x700")
     ventana.title("Herramienta de proyección fiscal")
 
     frame_izq = ctk.CTkFrame(ventana)
@@ -87,21 +85,6 @@ def iniciar_interfaz(debug: bool = False):
 
     label_titulo = ctk.CTkLabel(frame_izq, text="Calculadora de Ingreso Futuro", font=("Arial", 20, "bold"))
     label_titulo.pack(pady=10)
-    if debug:
-        entry_CUo = ctk.CTkEntry(frame_izq, placeholder_text="Costo Unitario Objetivo (CUo)")
-        entry_CUo.pack(pady=5)
-
-        entry_Ua = ctk.CTkEntry(frame_izq, placeholder_text="Utilidad Acumulada (Ua)")
-        entry_Ua.pack(pady=5)
-
-        entry_Ia = ctk.CTkEntry(frame_izq, placeholder_text="Ingreso Acumulado (Ia)")
-        entry_Ia.pack(pady=5)
-
-        entry_Deducciones = ctk.CTkEntry(frame_izq, placeholder_text="Deducciones Acumuladas")
-        entry_Deducciones.pack(pady=5)
-
-        entry_mes_actual = ctk.CTkEntry(frame_izq, placeholder_text="Mes actual (1-12)")
-        entry_mes_actual.pack(pady=5)
 
     resultado_label = ctk.CTkLabel(frame_izq, text="", font=("Arial", 16))
     resultado_label.pack(pady=5)
@@ -110,27 +93,11 @@ def iniciar_interfaz(debug: bool = False):
     searchable_dropdown.pack(pady=10, fill="x")
     searchable_dropdown.disable()
 
-    boton_calcular = ctk.CTkButton(frame_izq, text="Calcular Ingreso Futuro", command=lambda: calcular_desde_inputs())
-    boton_calcular.pack(pady=15, fill="x")
+    boton_calcular = ctk.CTkButton(frame_izq, text="Cargar CSV y generar PDF", command=lambda: cargar_csv())
+    boton_calcular.pack(pady=5, fill="x")
 
-    boton_csv = ctk.CTkButton(frame_izq, text="Cargar CSV y generar PDF", command=lambda: cargar_csv())
-    boton_csv.pack(pady=5, fill="x")
-
-    def calcular_desde_inputs():
-        try:
-            cuo = float(entry_CUo.get())
-            ua = float(entry_Ua.get())
-            ia = float(entry_Ia.get())
-            ded = float(entry_Deducciones.get())
-            mes = int(entry_mes_actual.get())
-
-            resultado, error = calcular_ingreso_futuro_desde_inputs(cuo, ua, ia, ded, mes)
-            if error:
-                resultado_label.configure(text=error)
-            else:
-                resultado_label.configure(text=f"Ingreso Futuro Necesario: ${resultado:,.2f}")
-        except ValueError:
-            resultado_label.configure(text="Error: Introduce solo números válidos.")
+    boton_forecast = ctk.CTkButton(frame_izq, text="Proyección mensual con histórico", command=lambda: generar_forecast())
+    boton_forecast.pack(pady=5, fill="x")
 
     def cargar_csv():
         resultado, error = cargar_csv_y_generar_pdf()
@@ -141,33 +108,46 @@ def iniciar_interfaz(debug: bool = False):
             searchable_dropdown.disable()
         else:
             resultado_label.configure(text=f"PDF generado: {resultado}")
-
             json_path = "resultados.json"
             if os.path.exists(json_path):
-                try:
-                    with open(json_path, "r", encoding="utf-8") as f:
-                        data = json.load(f)
-                    company_names = [item.get("NOMBRE", "") for item in data if "NOMBRE" in item]
+                with open(json_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                company_names = [item.get("NOMBRE", "") for item in data if "NOMBRE" in item]
+                if company_names:
+                    searchable_dropdown.values = company_names
+                    searchable_dropdown.listbox_update(company_names)
+                    searchable_dropdown.enable()
 
-                    if company_names:
-                        searchable_dropdown.values = company_names
-                        searchable_dropdown.listbox_update(company_names)
-                        searchable_dropdown.enable()
-                    else:
-                        searchable_dropdown.values = []
-                        searchable_dropdown.listbox_update([])
-                        searchable_dropdown.disable()
-                        resultado_label.configure(text="No se encontraron empresas en el JSON.")
-                except Exception as e:
-                    resultado_label.configure(text=f"Error leyendo JSON: {e}")
-                    searchable_dropdown.values = []
-                    searchable_dropdown.listbox_update([])
-                    searchable_dropdown.disable()
-            else:
-                resultado_label.configure(text="Archivo JSON no encontrado.")
-                searchable_dropdown.values = []
-                searchable_dropdown.listbox_update([])
-                searchable_dropdown.disable()
+    def generar_forecast():
+        empresa = searchable_dropdown.get()
+        if not empresa:
+            resultado_label.configure(text="Selecciona una empresa válida.")
+            return
+
+        with open("resultados.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+        resultado_empresa = next((item for item in data if item.get("NOMBRE") == empresa), None)
+        if not resultado_empresa:
+            resultado_label.configure(text="Empresa no encontrada en JSON.")
+            return
+
+        ingreso_futuro = resultado_empresa.get("IF")
+        deducciones_futuras = resultado_empresa.get("DF")
+        mes_actual = resultado_empresa.get("MES")
+
+        if not all(isinstance(val, (int, float)) for val in [ingreso_futuro, deducciones_futuras]) or not isinstance(mes_actual, int):
+            resultado_label.configure(text="Datos inválidos en JSON para esta empresa.")
+            return
+
+        file_path = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])
+        if not file_path:
+            return
+
+        try:
+            forecast_proporcional(ingreso_futuro, mes_actual, file_path)
+            resultado_label.configure(text="Proyección generada y visualizada con éxito.")
+        except Exception as e:
+            resultado_label.configure(text=f"Error al generar proyección: {e}")
 
     frame_der = ctk.CTkFrame(ventana)
     frame_der.pack(side="right", fill="both", expand=True, padx=20, pady=20)
@@ -177,7 +157,7 @@ def iniciar_interfaz(debug: bool = False):
     photo = ImageTk.PhotoImage(img)
 
     label_img = ctk.CTkLabel(frame_der, image=photo, text="")
-    label_img.image = photo  # Evita que la imagen se destruya
+    label_img.image = photo
     label_img.place(relx=0.5, rely=0.5, anchor="center")
     label_img.pack(pady=150, anchor="center")
 
