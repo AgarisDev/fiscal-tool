@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.graph_objects as go
 
-def forecast_proporcional(ingreso_futuro: float, mes_actual: int, csv_path: str):
+def forecast_proporcional(ingreso_futuro: float, deducciones_futuras: float, mes_actual: int, csv_path: str):
     # Leer histórico desde CSV
     df = pd.read_csv(csv_path)
 
@@ -9,11 +9,9 @@ def forecast_proporcional(ingreso_futuro: float, mes_actual: int, csv_path: str)
     if 'Mes' not in df.columns or 'Ingreso' not in df.columns:
         raise ValueError("El CSV debe contener las columnas 'Mes' e 'Ingreso'.")
 
-    # Asegurarse de que 'Mes' sea numérico
+    # Convertir 'Mes' a numérico y filtrar datos válidos
     df['Mes'] = pd.to_numeric(df['Mes'], errors='coerce')
     df.dropna(subset=['Mes'], inplace=True)
-
-    # Filtrar meses válidos (1 al 12)
     df = df[(df['Mes'] >= 1) & (df['Mes'] <= 12)]
 
     # Agrupar por mes y obtener promedio histórico
@@ -33,29 +31,50 @@ def forecast_proporcional(ingreso_futuro: float, mes_actual: int, csv_path: str)
         raise ValueError("Los valores históricos están vacíos o son todos ceros.")
     pesos_normalizados = pesos / total
 
-    # Calcular proyección mensual basada en el ingreso futuro
-    proyeccion = pesos_normalizados * ingreso_futuro
+    # Calcular proyecciones para IF y DF
+    proyeccion_if = pesos_normalizados * ingreso_futuro
+    proyeccion_df = pesos_normalizados * deducciones_futuras
 
-    # Preparar dataframe final
+    # DataFrame final
     resultado = pd.DataFrame({
         'Mes': pesos_normalizados.index,
         'Peso (%)': pesos_normalizados.values * 100,
-        'Proyección (objetivo)': proyeccion.values
+        'Proyección Ingreso Futuro': proyeccion_if.values,
+        'Proyección Deducciones Futuras': proyeccion_df.values
     })
 
-    # Plot con plotly
+    # Crear gráfico comparativo
     fig = go.Figure()
+
+    # Serie de IF
     fig.add_trace(go.Bar(
         x=resultado['Mes'],
-        y=resultado['Proyección (objetivo)'],
+        y=resultado['Proyección Ingreso Futuro'],
+        name="Ingreso Futuro",
+        marker_color='lightgreen',
         text=resultado['Peso (%)'].apply(lambda x: f"{x:.1f}%"),
         textposition='outside'
     ))
+
+    # Serie de DF
+    fig.add_trace(go.Bar(
+        x=resultado['Mes'],
+        y=resultado['Proyección Deducciones Futuras'],
+        name="Deducciones Futuras",
+        marker_color='tomato',
+        textposition='outside'
+    ))
+
     fig.update_layout(
-        title="Distribución Proporcional del Ingreso Futuro",
+        title="Distribución Proporcional de Ingreso y Deducciones Futuras",
         xaxis_title="Mes",
-        yaxis_title="Ingreso proyectado",
+        yaxis_title="Monto proyectado",
         template="plotly_dark",
+        barmode='group',
         height=500
     )
-    fig.show()
+
+    # Guardar como HTML
+    html_path = "forecast_result.html"
+    fig.write_html(html_path)
+    return html_path, resultado

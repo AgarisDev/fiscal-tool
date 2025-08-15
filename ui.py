@@ -72,6 +72,7 @@ class SearchableDropdown(ctk.CTkFrame):
         self.entry.configure(state="disabled")
         self.listbox.configure(state="disabled")
 
+
 def iniciar_interfaz(debug: bool = False):
     ctk.set_appearance_mode("dark")
     ctk.set_default_color_theme("blue")
@@ -80,6 +81,7 @@ def iniciar_interfaz(debug: bool = False):
     ventana.geometry("1000x700")
     ventana.title("Herramienta de proyección fiscal")
 
+    # === FRAME IZQUIERDO (Formulario) ===
     frame_izq = ctk.CTkFrame(ventana)
     frame_izq.pack(side="left", fill="both", expand=True, padx=20, pady=20)
 
@@ -144,11 +146,12 @@ def iniciar_interfaz(debug: bool = False):
             return
 
         try:
-            forecast_proporcional(ingreso_futuro, mes_actual, file_path)
-            resultado_label.configure(text="Proyección generada y visualizada con éxito.")
+            html_path, tabla = forecast_proporcional(ingreso_futuro, deducciones_futuras, mes_actual, file_path)
+            resultado_label.configure(text=f"Proyección generada en: {html_path}")
         except Exception as e:
             resultado_label.configure(text=f"Error al generar proyección: {e}")
 
+    # === FRAME DERECHO (Imagen) ===
     frame_der = ctk.CTkFrame(ventana)
     frame_der.pack(side="right", fill="both", expand=True, padx=20, pady=20)
 
