@@ -5,7 +5,10 @@
         "IF": 11065835.44,
         "CO": 0.0001,
         "CA": "0.3400",
-        "MES": 6
+        "MES": 6,
+        "IA": 34573183.82,
+        "UA": 11755956.14,
+        "DA": 22817227.68
     },
     {
         "NOMBRE": "PROYECTOS Y DESAROLLOS AGEIT",
@@ -13,7 +16,10 @@
         "IF": 903115.35,
         "CO": 0.0053,
         "CA": "0.4065",
-        "MES": 6
+        "MES": 6,
+        "IA": 4672119.58,
+        "UA": 1899276.49,
+        "DA": 2772843.09
     },
     {
         "NOMBRE": "AGRELA DESTILADORA AGAVERA, S.A. DE C.V",
@@ -21,7 +27,10 @@
         "IF": -127374709.06,
         "CO": 0.0105,
         "CA": "0.9713",
-        "MES": 6
+        "MES": 6,
+        "IA": 135214128.81,
+        "UA": 131335575.89,
+        "DA": 3878552.92
     },
     {
         "NOMBRE": "AGRO EXPORTADORA FISTRA, S.A. DE C.V",
@@ -29,23 +38,10 @@
         "IF": -216961456.29,
         "CO": 0.0157,
         "CA": "0.8858",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "GRUPO AGROMIRAL",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0209,
-        "CA": "nan",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "ALCANCE GLOBAL SERVICIOS ADMINISTRATIVOS SA DE CV",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0261,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 282518917.73,
+        "UA": 250254813.08,
+        "DA": 32264104.65
     },
     {
         "NOMBRE": "ANALISIS Y ESTUDIOS ARKA, S.A. DE C.V",
@@ -53,7 +49,10 @@
         "IF": 0.0,
         "CO": 0.0313,
         "CA": "0.0000",
-        "MES": 6
+        "MES": 6,
+        "IA": 0.0,
+        "UA": 0.0,
+        "DA": 0.0
     },
     {
         "NOMBRE": "ASESORÖA INTELIGENTE DE OCC",
@@ -61,7 +60,10 @@
         "IF": -2022049.72,
         "CO": 0.0365,
         "CA": "0.9999",
-        "MES": 6
+        "MES": 6,
+        "IA": 2022284.8,
+        "UA": 2022171.55,
+        "DA": 113.25
     },
     {
         "NOMBRE": "ATGINVA SA DE CV",
@@ -69,23 +71,10 @@
         "IF": 0.0,
         "CO": 0.0417,
         "CA": "0.0000",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "AWARE CONSULTORES",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0469,
-        "CA": "nan",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "CONSTRUCTORES BACHMEIER",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0521,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 0.0,
+        "UA": 0.0,
+        "DA": 0.0
     },
     {
         "NOMBRE": "CENTRALIZACION COMERCIAL BANBALI",
@@ -93,7 +82,10 @@
         "IF": 44395956.03,
         "CO": 0.0573,
         "CA": "0.0176",
-        "MES": 6
+        "MES": 6,
+        "IA": 40944872.08,
+        "UA": 719472.75,
+        "DA": 40225399.33
     },
     {
         "NOMBRE": "BASA CONSULTORIA FINANCIERA",
@@ -101,7 +93,10 @@
         "IF": -2928495.29,
         "CO": 0.0625,
         "CA": "0.6942",
-        "MES": 6
+        "MES": 6,
+        "IA": 8423211.71,
+        "UA": 5847563.39,
+        "DA": 2575648.32
     },
     {
         "NOMBRE": "MAQUILADORA COMERCIAL BIUE",
@@ -109,7 +104,10 @@
         "IF": 57215393.21,
         "CO": 0.9,
         "CA": "0.1431",
-        "MES": 6
+        "MES": 6,
+        "IA": 3545533.59,
+        "UA": 507487.25,
+        "DA": 3038046.34
     },
     {
         "NOMBRE": "BOLLATE DESTILADORA AGAVERA",
@@ -117,7 +115,10 @@
         "IF": -12991436.25,
         "CO": 0.0729,
         "CA": "0.5554",
-        "MES": 6
+        "MES": 6,
+        "IA": 317657705.78,
+        "UA": 176429656.54,
+        "DA": 141228049.24
     },
     {
         "NOMBRE": "APOYO COMERCIAL BRAEMAR",
@@ -125,7 +126,10 @@
         "IF": 96983501.13,
         "CO": 0.0781,
         "CA": "0.1730",
-        "MES": 6
+        "MES": 6,
+        "IA": 122120144.45,
+        "UA": 21124319.02,
+        "DA": 100995825.43
     },
     {
         "NOMBRE": "PRODUCTORA BREDA",
@@ -133,7 +137,10 @@
         "IF": 100488315.77,
         "CO": 0.0833,
         "CA": "0.1462",
-        "MES": 6
+        "MES": 6,
+        "IA": 116468556.23,
+        "UA": 17026373.95,
+        "DA": 99442182.28
     },
     {
         "NOMBRE": "BRIVA GARDEN MEXICO, S.A. DE C.V",
@@ -141,7 +148,10 @@
         "IF": -11293930.03,
         "CO": 0.0885,
         "CA": "0.6266",
-        "MES": 6
+        "MES": 6,
+        "IA": 62513392.87,
+        "UA": 39170122.68,
+        "DA": 23343270.19
     },
     {
         "NOMBRE": "BROTH AVAGE MIL SA DE CV",
@@ -149,7 +159,10 @@
         "IF": -75334088.97,
         "CO": 0.0937,
         "CA": "0.9731",
-        "MES": 6
+        "MES": 6,
+        "IA": 80093644.04,
+        "UA": 77936851.66,
+        "DA": 2156792.38
     },
     {
         "NOMBRE": "COFIDUE COMERCIOS Y SERVICIOS",
@@ -157,7 +170,10 @@
         "IF": -3223725.14,
         "CO": 0.0989,
         "CA": "0.6933",
-        "MES": 6
+        "MES": 6,
+        "IA": 10094905.19,
+        "UA": 6999095.02,
+        "DA": 3095810.17
     },
     {
         "NOMBRE": "COLPORTEUR",
@@ -165,15 +181,10 @@
         "IF": 50732807.9,
         "CO": 0.1041,
         "CA": "0.2696",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "SERVICIOS COLTRANE",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.1093,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 80464484.48,
+        "UA": 21694657.36,
+        "DA": 58769827.12
     },
     {
         "NOMBRE": "COMERCIALIZACION INTERNACIONAL TELXALT SA DE CV",
@@ -181,7 +192,10 @@
         "IF": 0.0,
         "CO": 0.0001,
         "CA": "0.0000",
-        "MES": 6
+        "MES": 6,
+        "IA": 0.0,
+        "UA": 0.0,
+        "DA": 0.0
     },
     {
         "NOMBRE": "COMERCIALIZADORA AGAVERA PALMAZUL, S.A. DE C.V",
@@ -189,7 +203,10 @@
         "IF": -83251295.48,
         "CO": 0.0053,
         "CA": "0.8661",
-        "MES": 6
+        "MES": 6,
+        "IA": 113931497.11,
+        "UA": 98672698.83,
+        "DA": 15258798.28
     },
     {
         "NOMBRE": "COMERCIALIZADORA COSIORRA SA DE CV",
@@ -197,7 +214,10 @@
         "IF": -344524.89,
         "CO": 0.0105,
         "CA": "1.0000",
-        "MES": 6
+        "MES": 6,
+        "IA": 344524.89,
+        "UA": 344524.89,
+        "DA": 0.0
     },
     {
         "NOMBRE": "COMERCIALIZADORA GUTENDROLL, S.A. DE C.V",
@@ -205,7 +225,10 @@
         "IF": -30475833.15,
         "CO": 0.0157,
         "CA": "0.9233",
-        "MES": 6
+        "MES": 6,
+        "IA": 36100099.09,
+        "UA": 33332116.61,
+        "DA": 2767982.48
     },
     {
         "NOMBRE": "CENTRALIZACION COMERCIAL COMPALIE",
@@ -213,7 +236,10 @@
         "IF": -2024954.32,
         "CO": 0.0209,
         "CA": "0.5313",
-        "MES": 6
+        "MES": 6,
+        "IA": 47563364.04,
+        "UA": 25270035.56,
+        "DA": 22293328.48
     },
     {
         "NOMBRE": "CONCRETAXTE DE MXICO SA DE CV",
@@ -221,15 +247,10 @@
         "IF": 132887665.06,
         "CO": 0.0261,
         "CA": "0.0962",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "CORAZON DE ALCACHOFA ANDARES",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0313,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 155252324.28,
+        "UA": 14942556.47,
+        "DA": 140309767.81
     },
     {
         "NOMBRE": "CRESTEGRA COMERCIOS",
@@ -237,23 +258,10 @@
         "IF": -2085696.65,
         "CO": 0.0365,
         "CA": "0.5315",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "CUBATA AGROSERVICIOS SA DE CV",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0417,
-        "CA": "nan",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "COMMERCIAL DANTHRI",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0469,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 75659971.63,
+        "UA": 40215564.66,
+        "DA": 35444406.97
     },
     {
         "NOMBRE": "DISEÑOS MAFRIH SA DE CV",
@@ -261,15 +269,10 @@
         "IF": -5293600.93,
         "CO": 0.0521,
         "CA": "0.6429",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "OPERADORA DODOURO",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0573,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 21470316.01,
+        "UA": 13803361.9,
+        "DA": 7666954.11
     },
     {
         "NOMBRE": "GRUPO AGRO INDUSTRIAL DRIED",
@@ -277,7 +280,10 @@
         "IF": 5773439.35,
         "CO": 0.0625,
         "CA": "0.3158",
-        "MES": 6
+        "MES": 6,
+        "IA": 12561312.2,
+        "UA": 3966897.41,
+        "DA": 8594414.79
     },
     {
         "NOMBRE": "VIGILANCIA Y SEGURIDAD PRIVADA EBRILI",
@@ -285,15 +291,10 @@
         "IF": 7293151.0,
         "CO": 0.0677,
         "CA": "0.4269",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "ESTUDIO Y CONSTRUCCION GOUIMEBEUT SA DE CV",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0729,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 31795035.59,
+        "UA": 13574077.41,
+        "DA": 18220958.18
     },
     {
         "NOMBRE": "ESTUDIOS EMPRESARIALES BAK, S.A. DE C.V",
@@ -301,7 +302,10 @@
         "IF": -24397771.03,
         "CO": 0.0781,
         "CA": "0.7604",
-        "MES": 6
+        "MES": 6,
+        "IA": 50817724.52,
+        "UA": 38639446.96,
+        "DA": 12178277.56
     },
     {
         "NOMBRE": "EVVAI CORPORATIVO SC",
@@ -309,7 +313,10 @@
         "IF": 335116.29,
         "CO": 0.0833,
         "CA": "0.5407",
-        "MES": 6
+        "MES": 6,
+        "IA": 168254944.45,
+        "UA": 90981690.11,
+        "DA": 77273254.34
     },
     {
         "NOMBRE": "FOCUS VENMAR MARKETING",
@@ -317,7 +324,10 @@
         "IF": 83763508.5,
         "CO": 0.0885,
         "CA": "0.2622",
-        "MES": 6
+        "MES": 6,
+        "IA": 135342066.42,
+        "UA": 35484700.65,
+        "DA": 99857365.77
     },
     {
         "NOMBRE": "FONTEPASA MEXICO SA DE CV",
@@ -325,15 +335,10 @@
         "IF": 28314419.78,
         "CO": 0.0937,
         "CA": "0.0094",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "DESARROLLADORA EN INNOVACION GANTRIMO",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0989,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 23874686.92,
+        "UA": 225193.22,
+        "DA": 23649493.7
     },
     {
         "NOMBRE": "GASTHOF BLINDAJE EMPRESARIAL, S.A. DE C.V",
@@ -341,7 +346,10 @@
         "IF": -156599.02,
         "CO": 0.1041,
         "CA": "0.6499",
-        "MES": 6
+        "MES": 6,
+        "IA": 716621.5,
+        "UA": 465759.43,
+        "DA": 250862.07
     },
     {
         "NOMBRE": "HAIBERGH SC",
@@ -349,7 +357,10 @@
         "IF": 35631835.79,
         "CO": 0.1093,
         "CA": "0.0770",
-        "MES": 6
+        "MES": 6,
+        "IA": 33224654.7,
+        "UA": 2559416.66,
+        "DA": 30665238.04
     },
     {
         "NOMBRE": "HEMELE SAPI",
@@ -357,7 +368,10 @@
         "IF": -66748753.0,
         "CO": 0.0001,
         "CA": "0.9697",
-        "MES": 6
+        "MES": 6,
+        "IA": 71057799.82,
+        "UA": 68903491.86,
+        "DA": 2154307.96
     },
     {
         "NOMBRE": "HERTER PRO-SALUD SA DE CV",
@@ -365,7 +379,10 @@
         "IF": -113337493.07,
         "CO": 0.0053,
         "CA": "0.7161",
-        "MES": 6
+        "MES": 6,
+        "IA": 264028247.03,
+        "UA": 189082200.55,
+        "DA": 74946046.48
     },
     {
         "NOMBRE": "HUMANCITY DESARROLLO INMOBILIARIO",
@@ -373,15 +390,10 @@
         "IF": -40697628.22,
         "CO": 0.0105,
         "CA": "1.0000",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "IDEKA MARKETING GROUP, S.A. DE C.V",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0157,
-        "CA": "0.0000",
-        "MES": 6
+        "MES": 6,
+        "IA": 40697628.22,
+        "UA": 40697628.22,
+        "DA": 0.0
     },
     {
         "NOMBRE": "IMPORTACIONES CAMINO REAL MX, S.A. DE C.V",
@@ -389,7 +401,10 @@
         "IF": -51389265.95,
         "CO": 0.0209,
         "CA": "0.8841",
-        "MES": 6
+        "MES": 6,
+        "IA": 67332162.18,
+        "UA": 59527317.33,
+        "DA": 7804844.85
     },
     {
         "NOMBRE": "INRUCREA INTEGRAL SA DE CV",
@@ -397,7 +412,10 @@
         "IF": -82322777.67,
         "CO": 0.0261,
         "CA": "0.7326",
-        "MES": 6
+        "MES": 6,
+        "IA": 182559708.01,
+        "UA": 133749334.78,
+        "DA": 48810373.23
     },
     {
         "NOMBRE": "JOSANRI SERVICIOS CORPORATIVOS INTEGRADOS SA DE CV",
@@ -405,15 +423,10 @@
         "IF": 0.0,
         "CO": 0.0313,
         "CA": "0.0000",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "KAMAFITZ_MULTIFUNCIONAL SA_DE_CV",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0365,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 0.0,
+        "UA": 0.0,
+        "DA": 0.0
     },
     {
         "NOMBRE": "SERVICIOS INDUSTRIALES DE CAFETERIA KANTE",
@@ -421,7 +434,10 @@
         "IF": 7885865.55,
         "CO": 0.0417,
         "CA": "0.4611",
-        "MES": 6
+        "MES": 6,
+        "IA": 63253247.61,
+        "UA": 29166941.54,
+        "DA": 34086306.07
     },
     {
         "NOMBRE": "KARAGIANNIS INTERNATIONAL TRADE AND FAIR COMPANY",
@@ -429,7 +445,10 @@
         "IF": 45521465.63,
         "CO": 0.0469,
         "CA": "0.0157",
-        "MES": 6
+        "MES": 6,
+        "IA": 42721308.06,
+        "UA": 669214.26,
+        "DA": 42052093.8
     },
     {
         "NOMBRE": "KUGNOTT COMERCIO GLOBAL SA DE CV",
@@ -437,7 +456,10 @@
         "IF": 0.0,
         "CO": 0.0521,
         "CA": "0.0000",
-        "MES": 6
+        "MES": 6,
+        "IA": 0.0,
+        "UA": 0.0,
+        "DA": 0.0
     },
     {
         "NOMBRE": "LEVANTEX IMPORTADORA SA DE CV",
@@ -445,7 +467,10 @@
         "IF": 26063360.87,
         "CO": 0.0573,
         "CA": "0.1549",
-        "MES": 6
+        "MES": 6,
+        "IA": 32868760.55,
+        "UA": 5091105.12,
+        "DA": 27777655.43
     },
     {
         "NOMBRE": "AGRO EXPORTADORA MAIFEN",
@@ -453,23 +478,10 @@
         "IF": -7954688.33,
         "CO": 0.0625,
         "CA": "0.9727",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "MALET GRUPO INMOBILIARIO, S.A. DE C.V",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0677,
-        "CA": "nan",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "MARKETING GLOBAL JINGLE",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0729,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 8446283.12,
+        "UA": 8215848.06,
+        "DA": 230435.06
     },
     {
         "NOMBRE": "MARKETING WHISTRI SA DE CV",
@@ -477,15 +489,10 @@
         "IF": -2994729.94,
         "CO": 0.0781,
         "CA": "1.0000",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "MEXOPTIC",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0833,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 2994729.94,
+        "UA": 2994729.94,
+        "DA": 0.0
     },
     {
         "NOMBRE": "DESARROLLADORA EN INNOVACION MILAIRE",
@@ -493,7 +500,10 @@
         "IF": 100745770.24,
         "CO": 0.0885,
         "CA": "0.0911",
-        "MES": 6
+        "MES": 6,
+        "IA": 101316077.24,
+        "UA": 9226390.25,
+        "DA": 92089686.99
     },
     {
         "NOMBRE": "MOAL COMEX",
@@ -501,23 +511,10 @@
         "IF": -344827.59,
         "CO": 0.0937,
         "CA": "1.0000",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "NAMBA LUXURY LIVING, S.A. DE C.V",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0989,
-        "CA": "nan",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "NOVOTI GRUPO ASESOR",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.1041,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 344827.59,
+        "UA": 344827.59,
+        "DA": 0.0
     },
     {
         "NOMBRE": "OBJETO AUDITOR SA DE CV",
@@ -525,7 +522,10 @@
         "IF": 70511391.22,
         "CO": 0.1093,
         "CA": "0.0394",
-        "MES": 6
+        "MES": 6,
+        "IA": 60946821.38,
+        "UA": 2401906.4,
+        "DA": 58544914.98
     },
     {
         "NOMBRE": "OLVIL MARKETING CENTER",
@@ -533,15 +533,10 @@
         "IF": 35548611.05,
         "CO": 0.0001,
         "CA": "0.1043",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "RESTAURANTE Y CAFETERIA PAPASGAN",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0053,
-        "CA": "0.0000",
-        "MES": 6
+        "MES": 6,
+        "IA": 44913581.95,
+        "UA": 4686508.56,
+        "DA": 40227073.39
     },
     {
         "NOMBRE": "PHIPENDROL PHARM",
@@ -549,7 +544,10 @@
         "IF": 1060324.02,
         "CO": 0.0105,
         "CA": "0.3371",
-        "MES": 6
+        "MES": 6,
+        "IA": 3120072.22,
+        "UA": 1051821.18,
+        "DA": 2068251.04
     },
     {
         "NOMBRE": "POMEX PONDERA SA DE CV",
@@ -557,7 +555,10 @@
         "IF": -29101874.59,
         "CO": 0.0157,
         "CA": "0.8860",
-        "MES": 6
+        "MES": 6,
+        "IA": 37876746.76,
+        "UA": 33558193.42,
+        "DA": 4318553.34
     },
     {
         "NOMBRE": "PRAXINSU COMERCIALIZADORA MEDICA",
@@ -565,7 +566,10 @@
         "IF": 64938949.66,
         "CO": 0.0209,
         "CA": "0.0073",
-        "MES": 6
+        "MES": 6,
+        "IA": 63188873.57,
+        "UA": 463897.71,
+        "DA": 62724975.86
     },
     {
         "NOMBRE": "PROYECTOS DE DESARROLLO PERSONAL Y DE GRUPO QAS SA DE CV",
@@ -573,7 +577,10 @@
         "IF": 0.0,
         "CO": 0.0261,
         "CA": "0.0000",
-        "MES": 6
+        "MES": 6,
+        "IA": 0.0,
+        "UA": 0.0,
+        "DA": 0.0
     },
     {
         "NOMBRE": "PUBLIDIRECTO ESTRATEGIAS SA DE CV",
@@ -581,7 +588,10 @@
         "IF": 31142642.78,
         "CO": 0.0313,
         "CA": "0.0563",
-        "MES": 6
+        "MES": 6,
+        "IA": 32834559.88,
+        "UA": 1847201.77,
+        "DA": 30987358.11
     },
     {
         "NOMBRE": "REDFORTEX BAJIO SA DE CV",
@@ -589,7 +599,10 @@
         "IF": -187004677.39,
         "CO": 0.0365,
         "CA": "0.8619",
-        "MES": 6
+        "MES": 6,
+        "IA": 262182060.43,
+        "UA": 225965356.15,
+        "DA": 36216704.28
     },
     {
         "NOMBRE": "RISTEGRA MEXICO SA DE CV",
@@ -597,7 +610,10 @@
         "IF": 39479581.94,
         "CO": 0.0417,
         "CA": "0.0853",
-        "MES": 6
+        "MES": 6,
+        "IA": 43427999.99,
+        "UA": 3702832.11,
+        "DA": 39725167.88
     },
     {
         "NOMBRE": "SAFE OCC VR S.A DE C.V",
@@ -605,23 +621,10 @@
         "IF": 35196836.53,
         "CO": 0.0469,
         "CA": "0.1192",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "STRONER VIGILANCIA EMPRESARIAL, S.A. DE C.V",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0521,
-        "CA": "nan",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "TERMANSE DESARROLLO HUMANO, S.A DE C.V",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0573,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 41495356.31,
+        "UA": 4947691.81,
+        "DA": 36547664.5
     },
     {
         "NOMBRE": "TRANS&CO LOGISTICA DE OCCIDENTE",
@@ -629,7 +632,10 @@
         "IF": 87604449.1,
         "CO": 0.0625,
         "CA": "0.1530",
-        "MES": 6
+        "MES": 6,
+        "IA": 108555238.05,
+        "UA": 16605384.7,
+        "DA": 91949853.35
     },
     {
         "NOMBRE": "TRATO LEGAL CONSULTING, S.A. DE C.V",
@@ -637,7 +643,10 @@
         "IF": 9035888.75,
         "CO": 0.0677,
         "CA": "0.3030",
-        "MES": 6
+        "MES": 6,
+        "IA": 18244137.21,
+        "UA": 5527553.11,
+        "DA": 12716584.1
     },
     {
         "NOMBRE": "CONSTRUCTORA VALMUN",
@@ -645,15 +654,10 @@
         "IF": 7610842.01,
         "CO": 0.0729,
         "CA": "0.3669",
-        "MES": 6
-    },
-    {
-        "NOMBRE": "VALNYA DISE¥OS, S.A. DE C.V",
-        "DF": NaN,
-        "IF": NaN,
-        "CO": 0.0781,
-        "CA": "nan",
-        "MES": 6
+        "MES": 6,
+        "IA": 20811961.36,
+        "UA": 7636570.86,
+        "DA": 13175390.5
     },
     {
         "NOMBRE": "VALYRRYN TIERRA DE AGAVE SA DE CV",
@@ -661,7 +665,10 @@
         "IF": -6069461.91,
         "CO": 0.0833,
         "CA": "0.9936",
-        "MES": 6
+        "MES": 6,
+        "IA": 6155339.95,
+        "UA": 6115977.75,
+        "DA": 39362.2
     },
     {
         "NOMBRE": "WAPAMOIWA SAPI DEÿCV",
@@ -669,7 +676,10 @@
         "IF": -34848893.65,
         "CO": 0.0885,
         "CA": "0.9837",
-        "MES": 6
+        "MES": 6,
+        "IA": 36138190.46,
+        "UA": 35550593.44,
+        "DA": 587597.02
     },
     {
         "NOMBRE": "PRESTADORA DE SERVICIOS WIETHOFF",
@@ -677,7 +687,10 @@
         "IF": 96626643.99,
         "CO": 0.0937,
         "CA": "0.2411",
-        "MES": 6
+        "MES": 6,
+        "IA": 143201628.19,
+        "UA": 34523446.65,
+        "DA": 108678181.54
     },
     {
         "NOMBRE": "YHNABET MERCADEO SA DE CV",
@@ -685,7 +698,10 @@
         "IF": -145463290.84,
         "CO": 0.0989,
         "CA": "0.8400",
-        "MES": 6
+        "MES": 6,
+        "IA": 225541203.75,
+        "UA": 189462100.09,
+        "DA": 36079103.66
     },
     {
         "NOMBRE": "ZANLAI INDUSTRIAS SA DE CV",
@@ -693,7 +709,10 @@
         "IF": 97987801.33,
         "CO": 0.1041,
         "CA": "0.0393",
-        "MES": 6
+        "MES": 6,
+        "IA": 85609992.89,
+        "UA": 3367360.97,
+        "DA": 82242631.92
     },
     {
         "NOMBRE": "ZENTYCSA SERVICIOS SA DE CV",
@@ -701,6 +720,9 @@
         "IF": -140049479.26,
         "CO": 0.1093,
         "CA": "0.7791",
-        "MES": 6
+        "MES": 6,
+        "IA": 277937107.57,
+        "UA": 216528852.3,
+        "DA": 61408255.27
     }
 ]

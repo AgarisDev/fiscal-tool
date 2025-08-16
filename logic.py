@@ -12,16 +12,16 @@ def limpiar_valor(valor):
         return 0.0
     return float(str(valor).replace("$", "").replace(",", "").strip())
 
-def calcular_ingreso_futuro_desde_inputs(cuo, ua, ia, deducciones, mes_actual):
+def calcular_ingreso_futuro_desde_inputs(CO, ua, ia, deducciones, mes_actual):
     if mes_actual < 1 or mes_actual > 12:
         return None, "Error: Mes actual debe estar entre 1 y 12"
 
     try:
         deducciones_finales = deducciones / mes_actual * (12 - mes_actual)
-        ingreso_futuro = ((cuo * ia) - ua + deducciones_finales) / (1 - cuo)
+        ingreso_futuro = ((CO * ia) - ua + deducciones_finales) / (1 - CO)
         return ingreso_futuro, None
     except ZeroDivisionError:
-        return None, "Error: El CUo no puede ser 1."
+        return None, "Error: El CO no puede ser 1."
     except Exception as e:
         return None, f"Error inesperado: {str(e)}"
     
@@ -36,7 +36,7 @@ def cargar_csv_y_generar_pdf():
 
     def preparar_datos(row):
         try:
-            row["CUO"] = limpiar_valor(row["Coeficiente objetivo"])
+            row["CO"] = limpiar_valor(row["Coeficiente objetivo"])
             row["IA"] = limpiar_valor(row["IngresoActual"])
             row["UA"] = limpiar_valor(row["UtilidadActual"])
             row["DA"] = limpiar_valor(row["DeduccionesActuales"])
@@ -50,17 +50,17 @@ def cargar_csv_y_generar_pdf():
     def calcular_if(row):
         try:
             dfuturas = row["DA"] / row["MES"] * (12 - row["MES"])
-            return round(((row["CUO"] * row["IA"]) - row["UA"] + dfuturas) / (1 - row["CUO"]), 2)
+            return round(((row["CO"] * row["IA"]) - row["UA"] + dfuturas) / (1 - row["CO"]), 2)
         except Exception as e:
             print(f"Error calculando IF en fila {row.get('NOMBRE', '')}: {e}")
             return None
 
-    df["IngresoFuturo"] = df.apply(calcular_if, axis=1)
+    df["IF"] = df.apply(calcular_if, axis=1)
 
     def calcular_df(row):
         try:
-            if_val = row.get("IngresoFuturo", 0)
-            return round(row["UA"] + if_val - row["CUO"] * (row["IA"] + if_val), 2)
+            if_val = row.get("IF", 0)
+            return round(row["UA"] + if_val - row["CO"] * (row["IA"] + if_val), 2)
         except Exception as e:
             print(f"Error calculando DF en fila {row.get('NOMBRE', '')}: {e}")
             return None
@@ -72,7 +72,7 @@ def cargar_csv_y_generar_pdf():
     def calcular_ca_co(row):
         try:
             ca = row["UA"] / row["IA"] if row["IA"] != 0 else 0
-            co = row["CUO"]
+            co = row["CO"]
             return f"{ca:.4f} / {co:.4f}"
         except Exception as e:
             print(f"Error calculando Ca / Co en fila {row.get('NOMBRE', '')}: {e}")
@@ -81,7 +81,7 @@ def cargar_csv_y_generar_pdf():
     df["Ca / Co"] = df.apply(calcular_ca_co, axis=1)
 
     def guardar_resultados_en_json(df, archivo_json="resultados.json"):
-    # Borrar archivo si ya existe
+        # Borrar archivo si ya existe
         if os.path.exists(archivo_json):
             os.remove(archivo_json)
 
@@ -90,26 +90,31 @@ def cargar_csv_y_generar_pdf():
             try:
                 nombre = row.get("NOMBRE", "")
                 df_val = round(row.get("DF", 0), 2)
-                if_val = round(row.get("IngresoFuturo", 0), 2)
-                co_val = round(row.get("CUO", 0), 4)
-                ia = row.get("IA", 0)
-                ua = row.get("UA", 0)
+                if_val = round(row.get("IF", 0), 2)
+                co_val = round(row.get("CO", 0), 4)
+                ia = round(row.get("IA", 0), 2)
+                ua = round(row.get("UA", 0), 2)
+                da = round(row.get("DA", 0), 2)
                 ca_val = f"{ua / ia:.4f}" if ia != 0 else "0.0000"
-                meses_restantes = 12 - row.get("Mes",0) 
+                meses_restantes = 12 - int(row.get("MES", 0))
 
                 resultados.append({
                     "NOMBRE": nombre,
-                    "DF": df_val,
-                    "IF": if_val,
-                    "CO": co_val,
-                    "CA": ca_val,
-                    "MES": meses_restantes
+                    "DF": df_val,                      # Deducciones futuras calculadas
+                    "IF": if_val,                      # Ingreso futuro calculado
+                    "CO": co_val,                      # Coeficiente objetivo
+                    "CA": ca_val,                      # Coeficiente utilidad actual
+                    "MES": meses_restantes,            # Meses restantes
+                    "IA": ia,                           # Ingreso actual
+                    "UA": ua,                           # Utilidad actual
+                    "DA": da                            # Deducciones actuales
                 })
             except Exception as e:
                 print(f"Error exportando a JSON fila {nombre}: {e}")
 
         with open(archivo_json, "w", encoding="utf-8") as f:
             json.dump(resultados, f, indent=4, ensure_ascii=False)
+
 
     class CustomPDF(FPDF):
         def header(self):

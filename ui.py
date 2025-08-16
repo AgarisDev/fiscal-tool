@@ -85,7 +85,7 @@ def iniciar_interfaz(debug: bool = False):
     frame_izq = ctk.CTkFrame(ventana)
     frame_izq.pack(side="left", fill="both", expand=True, padx=20, pady=20)
 
-    label_titulo = ctk.CTkLabel(frame_izq, text="Calculadora de Ingreso Futuro", font=("Arial", 20, "bold"))
+    label_titulo = ctk.CTkLabel(frame_izq, text="Herramienta de proyección fiscal", font=("Arial", 20, "bold"))
     label_titulo.pack(pady=10)
 
     resultado_label = ctk.CTkLabel(frame_izq, text="", font=("Arial", 16))
@@ -146,7 +146,12 @@ def iniciar_interfaz(debug: bool = False):
             return
 
         try:
-            html_path, tabla = forecast_proporcional(ingreso_futuro, deducciones_futuras, mes_actual, file_path)
+            html_path, tabla = forecast_proporcional(
+                json_path="resultados.json",
+                hist_csv_path=file_path,
+                nombre_empresa=empresa
+            
+)
             resultado_label.configure(text=f"Proyección generada en: {html_path}")
         except Exception as e:
             resultado_label.configure(text=f"Error al generar proyección: {e}")
