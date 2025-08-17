@@ -6,6 +6,21 @@ import pandas as pd
 import plotly.graph_objects as go
 from typing import Tuple, Optional, List
 
+MESES = {
+    1: "Enero",
+    2: "Febrero",
+    3: "Marzo",
+    4: "Abril",
+    5: "Mayo",
+    6: "Junio",
+    7: "Julio",
+    8: "Agosto",
+    9: "Septiembre",
+    10: "Octubre",
+    11: "Noviembre",
+    12: "Diciembre"
+}
+
 
 def _to_float(x, default: float = 0.0) -> float:
     try:
@@ -186,10 +201,13 @@ def forecast_proporcional(
             "Proyección_DF": proy_df.values
         })
 
+        resultado["Mes_nombre"] = resultado["Mes"].map(MESES)
+
+
         # Gráfico
         fig = go.Figure()
         fig.add_trace(go.Bar(x=resultado["Mes"], y=resultado["Proyección_IF"], name="Distribución de ingreso mensual"))
-        fig.add_trace(go.Bar(x=resultado["Mes"], y=resultado["Proyección_DF"], name="Facturación requerida mensual"))
+        fig.add_trace(go.Bar(x=resultado["Mes"], y=resultado["Proyección_DF"], name="Facturación mensual requerida"))
         fig.update_layout(
             title=f"Proyección mensual - {nombre}",
             barmode="group",
@@ -197,6 +215,38 @@ def forecast_proporcional(
             height=500,
             xaxis_title="Mes",
             yaxis_title="Monto"
+        )
+        fig_weights = go.Figure()
+        fig_weights.add_trace(
+            go.Scatter(
+                x=resultado["Mes"],
+                y=resultado["Peso_IF (%)"],
+                mode="lines+markers",
+                name="Peso IF (%)",
+                line=dict(color="cyan", width=2),
+                marker=dict(symbol="circle", size=8),
+                hovertemplate="Mes: %{customdata}<br>Peso IF: %{y:.2f}%<extra></extra>",
+                customdata=resultado["Mes_nombre"]
+            )
+        )
+        fig_weights.add_trace(
+            go.Scatter(
+                x=resultado["Mes"],
+                y=resultado["Peso_DF (%)"],
+                mode="lines+markers",
+                name="Peso DF (%)",
+                line=dict(color="magenta", width=2),
+                marker=dict(symbol="diamond", size=10),
+                hovertemplate="Mes: %{customdata}<br>Peso DF: %{y:.2f}%<extra></extra>",
+                customdata=resultado["Mes_nombre"]
+            )
+        )
+        fig_weights.update_layout(
+            title=f"Distribución de Pesos - {nombre}",
+            template="plotly_dark",
+            height=400,
+            xaxis_title="Mes",
+            yaxis_title="Peso (%)"
         )
 
         # HTML
@@ -217,6 +267,7 @@ def forecast_proporcional(
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(info_html)
             f.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+            f.write(fig_weights.to_html(full_html=False, include_plotlyjs=False))
 
         resultados.append((html_path, resultado))
 
