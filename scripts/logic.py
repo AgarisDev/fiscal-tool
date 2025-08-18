@@ -145,7 +145,7 @@ def cargar_csv_y_generar_pdf():
             self.cell(0, 10, f"Página {self.page_no()}", align="C")
 
     # Columnas y anchos
-    columnas = ["NOMBRE", "RFC", "IngresoFuturo", "DF", "Ca / Co"]
+    columnas = ["NOMBRE", "RFC", "IF", "DF", "Ca / Co"]
     col_widths = [70, 30, 30, 30,30]
 
     # Crear PDF
