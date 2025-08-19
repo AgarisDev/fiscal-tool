@@ -98,31 +98,12 @@ def _cargar_pesos_historicos(hist_csv_path: str) -> Tuple[pd.Series, pd.Series]:
 
     return pesos_ing, pesos_ded
 
-
 def forecast_proporcional(
     json_path: str,
     hist_csv_path: str,
     nombre_empresa: Optional[str] = None
 ):
-    """
-    Genera proyecciones mensuales para IF/DF usando pesos históricos por mes.
 
-    Parámetros
-    ----------
-    json_path : str
-        Ruta a resultados.json generado por logic.py (contiene NOMBRE, IF, DF, CO, CA, MES, IA, UA, DA).
-        Importante: 'MES' en el JSON es **meses restantes**.
-    hist_csv_path : str
-        CSV histórico con columnas: año, Mes, Ingreso, deducciones (solo se usan Mes, Ingreso y deducciones).
-    nombre_empresa : str | None
-        Si se especifica, filtra y genera solo para esa empresa.
-        Si es None, genera para todas las empresas del JSON.
-
-    Returns
-    -------
-    (html_path, dataframe) si nombre_empresa no es None.
-    De lo contrario, lista de [(html_path, dataframe), ...] para todas.
-    """
     if not os.path.exists(json_path):
         raise FileNotFoundError(f"No se encontró el JSON: {json_path}")
 
@@ -131,22 +112,19 @@ def forecast_proporcional(
 
     df = pd.DataFrame(data)
 
-    # Validar columnas del JSON
     requeridas = ["NOMBRE", "IF", "DF", "CO", "CA", "MES", "IA", "UA", "DA"]
     falt = [c for c in requeridas if c not in df.columns]
     if falt:
         raise ValueError(f"Faltan columnas en el JSON: {falt}")
 
-    # Filtrar por empresa si aplica
     if nombre_empresa:
         df = df[df["NOMBRE"] == nombre_empresa]
         if df.empty:
             raise ValueError(f"No se encontró la empresa '{nombre_empresa}' en {json_path}.")
 
-    # Cargar pesos históricos
     pesos_ing, pesos_ded = _cargar_pesos_historicos(hist_csv_path)
 
-    resultados: List[Tuple[str, pd.DataFrame]] = []
+    resultados: list[tuple[str, pd.DataFrame]] = []
 
     for _, row in df.iterrows():
         nombre = str(row["NOMBRE"])
@@ -156,41 +134,24 @@ def forecast_proporcional(
         ingreso_actual = _to_float(row["IA"], 0.0)
         utilidad_actual = _to_float(row["UA"], 0.0)
         deducciones_actuales = _to_float(row["DA"], 0.0)
-        meses_restantes = int(_to_float(row["MES"], 0.0))  # MES = meses restantes
+        meses_restantes = int(_to_float(row["MES"], 0.0))
 
         if meses_restantes <= 0:
-            # nada que proyectar
             continue
 
-        # Derivar mes_actual (1..12) y meses a proyectar
         mes_actual = 12 - meses_restantes
         meses_a_proyectar = list(range(mes_actual + 1, 13))
         if not meses_a_proyectar:
             continue
 
-        # Subset de pesos y renormalización SOLO para los meses restantes
         w_if = pesos_ing.loc[meses_a_proyectar]
         w_df = pesos_ded.loc[meses_a_proyectar]
 
-        w_if_sum = w_if.sum()
-        w_df_sum = w_df.sum()
+        w_if = w_if / w_if.sum() if w_if.sum() != 0 else pd.Series([1.0 / len(meses_a_proyectar)] * len(meses_a_proyectar), index=meses_a_proyectar)
+        w_df = w_df / w_df.sum() if w_df.sum() != 0 else pd.Series([1.0 / len(meses_a_proyectar)] * len(meses_a_proyectar), index=meses_a_proyectar)
 
-        if w_if_sum == 0:
-            w_if = pd.Series([1.0 / len(meses_a_proyectar)] * len(meses_a_proyectar),
-                             index=meses_a_proyectar, dtype=float)
-        else:
-            w_if = w_if / w_if_sum
-
-        if w_df_sum == 0:
-            w_df = pd.Series([1.0 / len(meses_a_proyectar)] * len(meses_a_proyectar),
-                             index=meses_a_proyectar, dtype=float)
-        else:
-            w_df = w_df / w_df_sum
-
-        # Proyecciones
         proy_if = ingreso_futuro * w_if
         proy_df = deducciones_futuras * w_df
-
         coef_utilidad_actual = (utilidad_actual / ingreso_actual) if ingreso_actual != 0 else 0.0
 
         resultado = pd.DataFrame({
@@ -200,79 +161,110 @@ def forecast_proporcional(
             "Peso_DF (%)": (w_df.values * 100.0),
             "Proyección_DF": proy_df.values
         })
-
         resultado["Mes_nombre"] = resultado["Mes"].map(MESES)
 
-
-        # Gráfico
+        # --- Gráficos ---
         fig = go.Figure()
         fig.add_trace(go.Bar(x=resultado["Mes"], y=resultado["Proyección_IF"], name="Distribución de ingreso mensual"))
         fig.add_trace(go.Bar(x=resultado["Mes"], y=resultado["Proyección_DF"], name="Facturación mensual requerida"))
-        fig.update_layout(
-            title=f"Proyección mensual - {nombre}",
-            barmode="group",
-            template="plotly_dark",
-            height=500,
-            xaxis_title="Mes",
-            yaxis_title="Monto"
-        )
+        fig.update_layout(title=f"Proyección mensual - {nombre}", barmode="group",
+                          template="plotly_dark", height=500, xaxis_title="Mes", yaxis_title="Monto")
+
         fig_weights = go.Figure()
         fig_weights.add_trace(
-            go.Scatter(
-                x=resultado["Mes"],
-                y=resultado["Peso_IF (%)"],
-                mode="lines+markers",
-                name="Peso IF (%)",
-                line=dict(color="cyan", width=2),
-                marker=dict(symbol="circle", size=8),
-                hovertemplate="Mes: %{customdata}<br>Peso IF: %{y:.2f}%<extra></extra>",
-                customdata=resultado["Mes_nombre"]
-            )
+            go.Scatter(x=resultado["Mes"], y=resultado["Peso_IF (%)"], mode="lines+markers",
+                       name="Peso IF (%)", line=dict(color="cyan", width=2),
+                       marker=dict(symbol="circle", size=8),
+                       hovertemplate="Mes: %{customdata}<br>Peso IF: %{y:.2f}%<extra></extra>",
+                       customdata=resultado["Mes_nombre"])
         )
         fig_weights.add_trace(
-            go.Scatter(
-                x=resultado["Mes"],
-                y=resultado["Peso_DF (%)"],
-                mode="lines+markers",
-                name="Peso DF (%)",
-                line=dict(color="magenta", width=2),
-                marker=dict(symbol="diamond", size=10),
-                hovertemplate="Mes: %{customdata}<br>Peso DF: %{y:.2f}%<extra></extra>",
-                customdata=resultado["Mes_nombre"]
-            )
+            go.Scatter(x=resultado["Mes"], y=resultado["Peso_DF (%)"], mode="lines+markers",
+                       name="Peso DF (%)", line=dict(color="magenta", width=2),
+                       marker=dict(symbol="diamond", size=10),
+                       hovertemplate="Mes: %{customdata}<br>Peso DF: %{y:.2f}%<extra></extra>",
+                       customdata=resultado["Mes_nombre"])
         )
-        fig_weights.update_layout(
-            title=f"Distribución de Pesos - {nombre}",
-            template="plotly_dark",
-            height=400,
-            xaxis_title="Mes",
-            yaxis_title="Peso (%)"
-        )
+        fig_weights.update_layout(title=f"Distribución de Pesos - {nombre}",
+                                  template="plotly_dark", height=400, xaxis_title="Mes", yaxis_title="Peso (%)")
 
-        # HTML
-        info_html = f"""
-        <h2>Datos Generales</h2>
-        <ul>
-            <li><b>Empresa:</b> {nombre}</li>
-            <li><b>Coeficiente objetivo:</b> {coef_objetivo:.6f}</li>
-            <li><b>Total deducciones actuales:</b> {deducciones_actuales:,.2f}</li>
-            <li><b>Total ingreso actual:</b> {ingreso_actual:,.2f}</li>
-            <li><b>Total ingreso futuro (IF):</b> {ingreso_futuro:,.2f}</li>
-            <li><b>Total deducciones futuras (DF):</b> {deducciones_futuras:,.2f}</li>
-            <li><b>Coeficiente utilidad actual:</b> {coef_utilidad_actual:.6f}</li>
-        </ul>
-        """
-
+        # --- HTML Dashboard ---
         html_path = os.path.join(os.getcwd(), f"forecast_{nombre.replace(' ', '_')}.html")
         with open(html_path, "w", encoding="utf-8") as f:
-            f.write(info_html)
+            f.write(f"""
+<html>
+<head>
+    <style>
+        body {{
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }}
+        .header-container {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }}
+        h1 {{
+            color: #d3d3d3;
+            font-size: 28px;
+            margin: 0;
+        }}
+        img.logo {{
+            height: 60px;
+        }}
+        .metrics-container {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }}
+        .metric-card {{
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px 25px;
+            flex: 1 1 250px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            font-size: 18px;
+        }}
+        .metric-card b {{
+            color: #ff69b4;
+        }}
+        .plot-container {{
+            margin: 20px 0;
+        }}
+        @media (max-width: 800px) {{
+            .metrics-container {{
+                flex-direction: column;
+            }}
+        }}
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>{nombre}</h1>
+        <img class="logo" src="assets/logo.png" alt="Logo">
+    </div>
+
+    <div class="metrics-container">
+        <div class="metric-card"><b>Coeficiente objetivo:</b> {coef_objetivo:.6f}</div>
+        <div class="metric-card"><b>Total deducciones actuales:</b> {deducciones_actuales:,.2f}</div>
+        <div class="metric-card"><b>Total ingreso actual:</b> {ingreso_actual:,.2f}</div>
+        <div class="metric-card"><b>Total ingreso futuro (IF):</b> {ingreso_futuro:,.2f}</div>
+        <div class="metric-card"><b>Total deducciones futuras (DF):</b> {deducciones_futuras:,.2f}</div>
+        <div class="metric-card"><b>Coeficiente utilidad actual:</b> {coef_utilidad_actual:.6f}</div>
+    </div>
+
+    <div class="plot-container">
+""")
             f.write(fig.to_html(full_html=False, include_plotlyjs='cdn'))
+            f.write("</div><div class='plot-container'>")
             f.write(fig_weights.to_html(full_html=False, include_plotlyjs=False))
+            f.write("</div></body></html>")
 
         resultados.append((html_path, resultado))
 
-    # Si se pidió una sola empresa, devolver tupla; si no, lista
-    if nombre_empresa:
-        return resultados[0] if resultados else (None, None)
+    return resultados[0] if nombre_empresa else resultados
 
-    return resultados
