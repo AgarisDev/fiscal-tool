@@ -5,13 +5,12 @@ from forecast_logic import forecast_proporcional
 import json
 import os
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, ttk
 
 class SearchableDropdown(ctk.CTkFrame):
     def __init__(self, master, values, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
         self.values = values
-        self.filtered_values = values
 
         self.entry = ctk.CTkEntry(self)
         self.entry.pack(fill="x", padx=5, pady=(5,0))
@@ -20,32 +19,29 @@ class SearchableDropdown(ctk.CTkFrame):
         listbox_frame = ctk.CTkFrame(self)
         listbox_frame.pack(fill="x", padx=5, pady=(0,5), expand=False)
 
-        self.scrollbar = tk.Scrollbar(listbox_frame, orient="vertical")
-        self.scrollbar.pack(side="right", fill="y")
-
-        self.listbox = tk.Listbox(
+        self.listbox = ctk.CTkComboBox(
             listbox_frame,
-            height=6,
-            yscrollcommand=self.scrollbar.set,
-            bg="#1F1F1F",
-            fg="white",
-            selectbackground="#3A7FF6",
-            activestyle="none",
-            highlightthickness=0,
-            borderwidth=0,
+            width=200,
+            height=30,
+            fg_color="#1F1F1F",
+            text_color="white",
+            dropdown_fg_color="#1F1F1F",
+            dropdown_hover_color="#3A7FF6",
+            button_color="#3A7FF6",
+            button_hover_color="#2E5ECF",
+            state="normal",
+            values=self.values,
+            command=self.on_select
         )
+        self.listbox.set("Seleccione una empresa")
         self.listbox.pack(side="left", fill="both", expand=True)
-        self.scrollbar.config(command=self.listbox.yview)
-
-        self.listbox.bind("<<ListboxSelect>>", self.on_select)
-        self.listbox_update(self.values)
-
-        self.selected_value = None
 
     def listbox_update(self, values):
-        self.listbox.delete(0, "end")
-        for v in values:
-            self.listbox.insert("end", v)
+        self.listbox.configure(values=values)
+        if values:
+            self.listbox.set("")
+        else:
+            self.listbox.set("No hay coincidencias")
 
     def on_keyrelease(self, event):
         typed = self.entry.get().lower()
@@ -53,13 +49,11 @@ class SearchableDropdown(ctk.CTkFrame):
         self.listbox_update(self.filtered_values)
 
     def on_select(self, event):
-        selected_indices = self.listbox.curselection()
-        if selected_indices:
-            index = selected_indices[0]
-            self.selected_value = self.filtered_values[index]
-            self.entry.delete(0, "end")
-            self.entry.insert(0, self.selected_value)
-            self.listbox_update(self.filtered_values)
+        selected_value = self.listbox.get()
+        if selected_value in self.values:
+            self.selected_value = selected_value
+        else:
+            self.selected_value = None  
 
     def get(self):
         return self.selected_value
