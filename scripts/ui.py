@@ -80,25 +80,29 @@ def iniciar_interfaz(debug: bool = False):
     ventana = ctk.CTk()
     ventana.geometry("1000x700")
     ventana.title("Herramienta de proyección fiscal")
+    icono=tk.PhotoImage(master=ventana,file="assets/Fungus.png")
+    ventana.wm_iconphoto(True,icono)
+    #ventana.iconphoto(True,tk.PhotoImage(file="assets/fungusIcon.ico"))
 
     # === FRAME IZQUIERDO (Formulario) ===
     frame_izq = ctk.CTkFrame(ventana)
-    frame_izq.pack(side="left", fill="both", expand=True, padx=20, pady=20)
+    frame_izq.pack(side="left", fill="both", expand=True, padx=30, pady=30)
 
     label_titulo = ctk.CTkLabel(frame_izq, text="Herramienta de proyección fiscal", font=("Arial", 20, "bold"))
     label_titulo.pack(pady=10)
 
-    resultado_label = ctk.CTkLabel(frame_izq, text="", font=("Arial", 16))
+    boton_calcular = ctk.CTkButton(frame_izq, text="1.Cargar CSV y generar PDF", command=lambda: cargar_csv())
+    boton_calcular.pack(pady=5, fill="x")
+
+    resultado_label = ctk.CTkLabel(frame_izq, text="",justify="left", font=("Arial", 16) )
     resultado_label.pack(pady=5)
 
     searchable_dropdown = SearchableDropdown(frame_izq, [])
     searchable_dropdown.pack(pady=10, fill="x")
     searchable_dropdown.disable()
 
-    boton_calcular = ctk.CTkButton(frame_izq, text="Cargar CSV y generar PDF", command=lambda: cargar_csv())
-    boton_calcular.pack(pady=5, fill="x")
-
-    boton_forecast = ctk.CTkButton(frame_izq, text="Proyección mensual con histórico", command=lambda: generar_forecast())
+    
+    boton_forecast = ctk.CTkButton(frame_izq, text="3. Generar proyección mensual con histórico", command=lambda: generar_forecast())
     boton_forecast.pack(pady=5, fill="x")
 
     def cargar_csv():
@@ -119,6 +123,7 @@ def iniciar_interfaz(debug: bool = False):
                     searchable_dropdown.values = company_names
                     searchable_dropdown.listbox_update(company_names)
                     searchable_dropdown.enable()
+                    searchable_dropdown()
 
     def generar_forecast():
         empresa = searchable_dropdown.get()
@@ -152,13 +157,13 @@ def iniciar_interfaz(debug: bool = False):
                 nombre_empresa=empresa
             
 )
-            resultado_label.configure(text=f"Proyección generada en: {html_path}")
+            resultado_label.configure(text=f"Proyección generada en:\n {html_path}")
         except Exception as e:
             resultado_label.configure(text=f"Error al generar proyección: {e}")
 
     # === FRAME DERECHO (Imagen) ===
     frame_der = ctk.CTkFrame(ventana)
-    frame_der.pack(side="right", fill="both", expand=True, padx=20, pady=20)
+    frame_der.pack(side="right", fill="both", expand=True, padx=30, pady=30)
 
     img = Image.open("assets/logo.png")
     img = img.resize((400, 150))
