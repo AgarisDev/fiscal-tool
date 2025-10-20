@@ -101,8 +101,9 @@ def _cargar_pesos_historicos(hist_csv_path: str) -> Tuple[pd.Series, pd.Series]:
 def forecast_proporcional(
     json_path: str,
     hist_csv_path: str,
+    html_output: str,
     nombre_empresa: Optional[str] = None
-):
+    ):
 
     if not os.path.exists(json_path):
         raise FileNotFoundError(f"No se encontró el JSON: {json_path}")
@@ -189,7 +190,8 @@ def forecast_proporcional(
                                   template="plotly_dark", height=400, xaxis_title="Mes", yaxis_title="Peso (%)")
 
         # --- HTML Dashboard ---
-        html_path = os.path.join(os.getcwd(), f"forecast_{nombre.replace(' ', '_')}.html")
+        #ruta_salida = 
+        html_path = os.path.join(html_output, f"forecast_{nombre.replace(' ', '_')}.html")
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(f"""
 <html>
