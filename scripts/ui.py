@@ -8,6 +8,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.filedialog import asksaveasfilename, askdirectory
 from tkinter import filedialog
+from ttkwidgets.autocomplete import AutocompleteCombobox
 import platform
 
 bg = "#1F1F1F"
@@ -27,7 +28,6 @@ class SearchableDropdown(ctk.CTkFrame):
         style.configure('my.TCombobox.Vertical.TScrollbar', arrowisize=9)
 
         self.combobox = ttk.Combobox(self, values=self.values, style='my.TCombobox', foreground=bg)
-        self.combobox.set("Buscar una empresa")
 
         self.combobox.option_add('*TCombobox*Listbox*Background', bg)
         self.combobox.option_add('*TCombobox*Listbox*Foreground', fg)
@@ -50,10 +50,10 @@ class SearchableDropdown(ctk.CTkFrame):
 
     def listbox_update(self, values):
         self.combobox.configure(values=values)
-        if values:
-            self.combobox.set("")
+        if not values:
+            self.combobox.set("Cargue CSV para continuar")
         else:
-            self.combobox.set("No hay coincidencias")
+            self.combobox.set("Buscar empresa...")
 
     def on_keyrelease(self, event):
         typed = self.entry.get().lower()
@@ -64,8 +64,11 @@ class SearchableDropdown(ctk.CTkFrame):
         self.selected_value = self.combobox.get()
 
     def get(self):
-        return self.selected_value or self.selected_value.get()
-
+        if self.selected_value != None:
+            return self.selected_value
+        else:
+            return None
+        
     def enable(self):
         self.combobox.configure(state="normal")
 
@@ -137,6 +140,8 @@ def iniciar_interfaz(debug: bool = False):
     boton_forecast = ctk.CTkButton(frame_circle3, anchor='w', text="3. Generar proyección mensual con histórico", fg_color="#0092E5", command=lambda: generar_forecast())
     boton_forecast.pack(pady=25, fill="x")
 
+    ventana.after(10000, lambda: resultado_label.configure(text=''))
+
     def cargar_csv():
         resultado, error = cargar_csv_y_generar_pdf()
         if error:
@@ -158,6 +163,10 @@ def iniciar_interfaz(debug: bool = False):
 
     def generar_forecast():
         empresa = searchable_dropdown.get()
+
+        if empresa is None:
+            resultado_label.configure(text="No has seleccionado alguna empresa, selecciona una")
+            return
 
         if not empresa:
             resultado_label.configure(text="Esa empresa no es valida, selecciona otra.")
@@ -202,6 +211,9 @@ def iniciar_interfaz(debug: bool = False):
         except Exception as e:
             resultado_label.configure(text=f"Error al generar proyección: {e}")
 
+        ventana.after(10000, lambda: resultado_label.configure(text=''))
+
+
     # === FRAME DERECHO (Imagen) ===
     frame_der = ctk.CTkFrame(ventana)
     frame_der.pack(side="right", fill="both", expand=True, padx=30, pady=30)
@@ -209,7 +221,6 @@ def iniciar_interfaz(debug: bool = False):
     img = Image.open("assets/logo.png")
     img = img.resize((300, 100))
     photo = ImageTk.PhotoImage(img)
-
     label_img = ctk.CTkLabel(frame_der, image=photo, text="")
     label_img.image = photo
     label_img.place(relx=0.5, rely=0.5, anchor="center")
