@@ -14,6 +14,8 @@ import platform
 bg = "#1F1F1F"
 fg = "#FFFFFF"
 
+is_dark = True
+
 class SearchableDropdown(ctk.CTkFrame):
     def __init__(self, master, values, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
@@ -64,8 +66,14 @@ class SearchableDropdown(ctk.CTkFrame):
         self.selected_value = self.combobox.get()
 
     def get(self):
+        valueCb = self.combobox.get()
         if self.selected_value != None:
             return self.selected_value
+        elif valueCb != None:
+            if (valueCb == "Buscar empresa...") or (valueCb == ""):
+                return None
+            else:
+                return valueCb
         else:
             return None
         
@@ -80,7 +88,7 @@ def iniciar_interfaz(debug: bool = False):
     ctk.set_default_color_theme("blue")
 
     ventana = ctk.CTk()
-    ventana.geometry("1000x700")
+    ventana.geometry("950x550")
     ventana.title("Herramienta de proyección fiscal")
     if platform.system() == "Windows":
         ventana.iconphoto(True,tk.PhotoImage(file="assets/fungusIcon.ico"))
@@ -90,11 +98,44 @@ def iniciar_interfaz(debug: bool = False):
     else:
         ventana.iconphoto(True,tk.PhotoImage(file="assets/Fungus.png"))
 
+    def clean_label():
+        ventana.after(10000, lambda: resultado_label.configure(text=''))
+
+    dark = ImageTk.PhotoImage(file = "assets/dark.png")
+    light = ImageTk.PhotoImage(file = "assets/light.png")
+
+    def switch_theme():
+        global is_dark
+
+        if is_dark:
+            switch_theme_btn.configure(image = dark)
+            ctk.set_appearance_mode("light")
+            empresa_label.configure(fg_color="#EBEBEB")
+            frame_izq.configure(fg_color="transparent")
+            canvas.config(bg="#EBEBEB")
+            canvas2.config(bg="#EBEBEB")
+            canvas3.config(bg="#EBEBEB")
+            is_dark = False
+        else:
+            switch_theme_btn.configure(image = light)
+            ctk.set_appearance_mode("dark")
+            empresa_label.configure(fg_color="#242424")
+            frame_izq.configure(fg_color="transparent")
+            canvas.configure(bg="#242424")
+            canvas2.configure(bg="#242424")
+            canvas3.configure(bg="#242424")
+            is_dark = True
+
+    switch_theme_btn = ctk.CTkButton(ventana, image=light, text="", command=switch_theme, height=25, width=25, anchor='nw')
+    switch_theme_btn.pack(pady=10, padx=10)
+
+
     # === FRAME IZQUIERDO (Formulario) ===
     frame_izq = ctk.CTkFrame(ventana)
     frame_izq.pack(side="left", fill="both", expand=True, padx=20, pady=20)
+    frame_izq.configure(fg_color="transparent")
 
-    label_titulo = ctk.CTkLabel(frame_izq, text="Herramienta de proyección fiscal", font=("Arial", 20, "bold"))
+    label_titulo = ctk.CTkLabel(frame_izq, text="Herramienta de Proyección Fiscal", font=("Times New Roman", 20))
     label_titulo.pack(pady=40)
 
     frame_circle1 = ctk.CTkFrame(frame_izq, fg_color="transparent")
@@ -109,7 +150,7 @@ def iniciar_interfaz(debug: bool = False):
     frame_circle3 = ctk.CTkFrame(frame_izq, fg_color="transparent")
     frame_circle3.pack(pady=25, fill="x")
 
-    canvas = tk.Canvas(frame_circle1, bg="#2B2B2B", height = 40, width = 40, highlightthickness=0)
+    canvas = tk.Canvas(frame_circle1, bg="#242424", height = 40, width = 40, highlightthickness=0)
     canvas.pack(side="left")
     canvas.create_oval(0, 0, 35, 35, fill='#0092E5')
     canvas.create_text(17, 17, text='1', fill='white', font=('Arial', 10))
@@ -117,30 +158,30 @@ def iniciar_interfaz(debug: bool = False):
     boton_calcular = ctk.CTkButton(frame_circle1, anchor='w',text="1.Cargar CSV y generar PDF", fg_color="#0092E5",command=lambda: cargar_csv())
     boton_calcular.pack(pady=10, fill="x")
 
-    resultado_label = ctk.CTkLabel(frame_izq, text="",justify="left", font=("Arial", 14))
+    resultado_label = ctk.CTkLabel(frame_izq, text="",justify="left", font=("Arial", 14), wraplength=350)
     resultado_label.pack(pady=5)
 
-    empresa_label = ctk.CTkLabel(frame_textcircle2,  anchor='sw', text="                Seleccionar empresa", justify="left", font=("Arial", 12), fg_color="#2B2B2B")
+    empresa_label = ctk.CTkLabel(frame_textcircle2,  anchor='sw', text="             2. Seleccionar empresa", justify="left", font=("Arial", 12), fg_color="#242424")
     empresa_label.pack(pady=5, side=tk.LEFT)
 
-    canvas = tk.Canvas(frame_circle2, bg="#2B2B2B", height=40, width=40, highlightthickness=0)
-    canvas.pack(side="left")
-    canvas.create_oval(0, 0, 35, 35, fill='#0092E5')
-    canvas.create_text(17, 17, text='2', fill='white', font=('Arial', 10))
+    canvas2 = tk.Canvas(frame_circle2, bg="#242424", height=40, width=40, highlightthickness=0)
+    canvas2.pack(side="left")
+    canvas2.create_oval(0, 0, 35, 35, fill='#0092E5')
+    canvas2.create_text(17, 17, text='2', fill='white', font=('Arial', 10))
 
     searchable_dropdown = SearchableDropdown(frame_circle2, [])
     searchable_dropdown.pack(pady=1, fill="x", expand=True)
     searchable_dropdown.disable()
 
-    canvas = tk.Canvas(frame_circle3, bg='#2B2B2B', height=40, width=40, highlightthickness=0)
-    canvas.pack(side="left")
-    canvas.create_oval(0, 0, 35, 35, fill="#0092E5")
-    canvas.create_text(17, 17, text='3', fill='white', font=('Arial', 10))
+    canvas3 = tk.Canvas(frame_circle3, bg='#242424', height=40, width=40, highlightthickness=0)
+    canvas3.pack(side="left")
+    canvas3.create_oval(0, 0, 35, 35, fill="#0092E5")
+    canvas3.create_text(17, 17, text='3', fill='white', font=('Arial', 10))
 
     boton_forecast = ctk.CTkButton(frame_circle3, anchor='w', text="3. Generar proyección mensual con histórico", fg_color="#0092E5", command=lambda: generar_forecast())
     boton_forecast.pack(pady=25, fill="x")
 
-    ventana.after(10000, lambda: resultado_label.configure(text=''))
+    clean_label()
 
     def cargar_csv():
         resultado, error = cargar_csv_y_generar_pdf()
@@ -160,6 +201,7 @@ def iniciar_interfaz(debug: bool = False):
                     searchable_dropdown.values = company_names
                     searchable_dropdown.listbox_update(company_names)
                     searchable_dropdown.enable()
+        clean_label()
 
     def generar_forecast():
         empresa = searchable_dropdown.get()
@@ -168,17 +210,13 @@ def iniciar_interfaz(debug: bool = False):
             resultado_label.configure(text="No has seleccionado alguna empresa, selecciona una")
             return
 
-        if not empresa:
-            resultado_label.configure(text="Esa empresa no es valida, selecciona otra.")
-            return
-
         with open("resultados.json", "r", encoding="utf-8") as f:
             data = json.load(f)
         resultado_empresa = next((item for item in data if item.get("NOMBRE") == empresa), None)
         if not resultado_empresa:
             resultado_label.configure(text="Empresa no encontrada en JSON.")
             return
-
+        
         ingreso_futuro = resultado_empresa.get("IF")
         deducciones_futuras = resultado_empresa.get("DF")
         mes_actual = resultado_empresa.get("MES")
@@ -211,19 +249,21 @@ def iniciar_interfaz(debug: bool = False):
         except Exception as e:
             resultado_label.configure(text=f"Error al generar proyección: {e}")
 
-        ventana.after(10000, lambda: resultado_label.configure(text=''))
-
-
     # === FRAME DERECHO (Imagen) ===
     frame_der = ctk.CTkFrame(ventana)
     frame_der.pack(side="right", fill="both", expand=True, padx=30, pady=30)
 
-    img = Image.open("assets/logo.png")
-    img = img.resize((300, 100))
-    photo = ImageTk.PhotoImage(img)
+    if is_dark:
+        img = Image.open("assets/logo.png")
+        img = img.resize((280, 90))
+        photo = ImageTk.PhotoImage(img)
+    else:
+        img = Image.open("assets/logo2.png")
+        img = img.resize((280, 90))
+        photo = ImageTk.PhotoImage(img)
+
     label_img = ctk.CTkLabel(frame_der, image=photo, text="")
     label_img.image = photo
-    label_img.place(relx=0.5, rely=0.5, anchor="center")
-    label_img.pack(pady=250, anchor="center")
+    label_img.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
     ventana.mainloop()
