@@ -21,6 +21,10 @@ MESES = {
     12: "Diciembre"
 }
 
+#Creación de ruta absoluta para el logo en el HTML
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
+LOGO_DIR = os.path.join(ASSETS_DIR, "logo.png")
 
 def _to_float(x, default: float = 0.0) -> float:
     try:
@@ -41,6 +45,8 @@ def _cargar_pesos_historicos(hist_csv_path: str) -> Tuple[pd.Series, pd.Series]:
         raise FileNotFoundError(f"No se encontró el CSV histórico: {hist_csv_path}")
 
     hist = pd.read_csv(hist_csv_path)
+    if hist.shape[0] == 0:
+        return "Ese CSV no contiene información alguna"
 
     # Normalizar nombres de columnas a minúsculas para robustez
     cols_lower = {c: c.lower() for c in hist.columns}
@@ -67,7 +73,7 @@ def _cargar_pesos_historicos(hist_csv_path: str) -> Tuple[pd.Series, pd.Series]:
 
     faltantes = [n for n, v in {"Mes": col_mes, "Ingreso": col_ing, "deducciones": col_ded}.items() if v is None]
     if faltantes:
-        raise ValueError(f"El CSV histórico debe contener columnas: {faltantes}. "
+        raise ValueError(f"El CSV histórico debe contener columnas: {faltantes}. ""\n"
                          f"Columnas encontradas: {list(hist.columns)}")
 
     # Tipificar
@@ -101,8 +107,9 @@ def _cargar_pesos_historicos(hist_csv_path: str) -> Tuple[pd.Series, pd.Series]:
 def forecast_proporcional(
     json_path: str,
     hist_csv_path: str,
+    html_output: str,
     nombre_empresa: Optional[str] = None
-):
+    ):
 
     if not os.path.exists(json_path):
         raise FileNotFoundError(f"No se encontró el JSON: {json_path}")
@@ -113,7 +120,7 @@ def forecast_proporcional(
     df = pd.DataFrame(data)
 
     requeridas = ["NOMBRE", "IF", "DF", "CO", "CA", "MES", "IA", "UA", "DA"]
-    falt = [c for c in requeridas if c not in df.columns]
+    falt = [c for c in requeridas if c not in df.columns]    
     if falt:
         raise ValueError(f"Faltan columnas en el JSON: {falt}")
 
@@ -189,7 +196,8 @@ def forecast_proporcional(
                                   template="plotly_dark", height=400, xaxis_title="Mes", yaxis_title="Peso (%)")
 
         # --- HTML Dashboard ---
-        html_path = os.path.join(os.getcwd(), f"forecast_{nombre.replace(' ', '_')}.html")
+        #ruta_salida = 
+        html_path = os.path.join(html_output, f"forecast_{nombre.replace(' ', '_')}.html")
         with open(html_path, "w", encoding="utf-8") as f:
             f.write(f"""
 <html>
@@ -245,7 +253,7 @@ def forecast_proporcional(
 <body>
     <div class="header-container">
         <h1>{nombre}</h1>
-        <img class="logo" src="assets/logo.png" alt="Logo">
+        <img class="logo" src="{LOGO_DIR}" alt="Logo">
     </div>
 
     <div class="metrics-container">

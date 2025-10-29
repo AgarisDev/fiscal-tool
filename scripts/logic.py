@@ -6,6 +6,7 @@ from tkinter.filedialog import asksaveasfilename
 from tkinter import filedialog
 import os
 import json
+from forecast_logic import LOGO_DIR
 
 def limpiar_valor(valor):
     if pd.isna(valor):
@@ -33,6 +34,16 @@ def cargar_csv_y_generar_pdf():
         return None, "Operación cancelada."
 
     df = pd.read_csv(ruta)
+
+    columnas_requeridas = ["NOMBRE", "RFC", "IngresoActual", "DeduccionesActuales", "UtilidadActual", "Coeficiente objetivo", "Mes"]
+
+    #Valida si el CSV contiene las columnas necesarias para los calculos
+    if not set(columnas_requeridas).issubset(df.columns):
+        return None, "Ese CSV no contiene información válida"
+    
+    #Valida si el CSV esta vacio o no
+    if df.shape[0] == 0:
+        return None, "Ese CSV no contiene información alguna"
 
     def preparar_datos(row):
         try:
@@ -66,8 +77,6 @@ def cargar_csv_y_generar_pdf():
             return None
 
     df["DF"] = df.apply(calcular_df, axis=1)
-
-
 
     def calcular_ca_co(row):
         try:
@@ -123,11 +132,12 @@ def cargar_csv_y_generar_pdf():
             self.rect(0, 0, 210, 297, 'F')
 
             # Logo
-            self.image("assets/logo.png", x=10, y=8, w=30)
+            self.image(LOGO_DIR, x=10, y=8, w=30)
 
             # Título
             self.set_text_color(255, 255, 255)
             self.set_font("Arial", "B", 12)
+            self.set_y(20)
             self.cell(0, 10, "Reporte Financiero", border=0, ln=True, align="C")
             self.ln(10)
 
