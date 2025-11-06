@@ -10,11 +10,19 @@ from tkinter.filedialog import asksaveasfilename, askdirectory
 from tkinter import filedialog
 from ttkwidgets.autocomplete import AutocompleteCombobox
 import platform
+import sys
 
 bg = "#1F1F1F"
 fg = "#FFFFFF"
 
 is_dark = True
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
 
 class SearchableDropdown(ctk.CTkFrame):
     def __init__(self, master, values, *args, **kwargs):
@@ -91,18 +99,27 @@ def iniciar_interfaz(debug: bool = False):
     ventana.geometry("950x550")
     ventana.title("Herramienta de proyección fiscal")
     if platform.system() == "Windows":
-        ventana.iconphoto(True,tk.PhotoImage(file="assets/fungusIcon.ico"))
+        icon_path = resource_path("assets/fungusIcon.ico")
+        ventana.iconphoto(True,tk.PhotoImage(file=icon_path))
     elif platform.system() == "Linux":
-        icono=tk.PhotoImage(master=ventana,file="assets/Fungus.png")
+        icon_path = resource_path("assets/Fungus.png")
+        icono=tk.PhotoImage(master=ventana,file=icon_path)
         ventana.wm_iconphoto(True,icono)
     else:
-        ventana.iconphoto(True,tk.PhotoImage(file="assets/Fungus.png"))
+        icon_path = resource_path("assets/Fungus.png")
+        ventana.iconphoto(True,tk.PhotoImage(file=icon_path))
 
     def clean_label():
         ventana.after(10000, lambda: resultado_label.configure(text=''))
 
-    dark = ImageTk.PhotoImage(file = "assets/dark.png")
-    light = ImageTk.PhotoImage(file = "assets/light.png")
+    dark_path = resource_path("assets/dark.png")
+    light_path = resource_path("assets/light.png")
+
+    dark_img = Image.open(dark_path)
+    dark = ImageTk.PhotoImage(dark_img)
+
+    light_img = Image.open(light_path)
+    light = ImageTk.PhotoImage(light_img)
 
     def switch_theme():
         global is_dark
@@ -184,7 +201,7 @@ def iniciar_interfaz(debug: bool = False):
     clean_label()
 
     def cargar_csv():
-        resultado, error = cargar_csv_y_generar_pdf()
+        resultado, error = cargar_csv_y_generar_pdf(resultado_label)
         if error:
             resultado_label.configure(text=error)
             searchable_dropdown.values = []
@@ -254,13 +271,13 @@ def iniciar_interfaz(debug: bool = False):
     frame_der.pack(side="right", fill="both", expand=True, padx=30, pady=30)
 
     if is_dark:
-        img = Image.open("assets/logo.png")
-        img = img.resize((280, 90))
-        photo = ImageTk.PhotoImage(img)
+        img_path = resource_path("assets/logo.png")
     else:
-        img = Image.open("assets/logo2.png")
-        img = img.resize((280, 90))
-        photo = ImageTk.PhotoImage(img)
+        img_path = resource_path("assets/logo2.png")
+
+    img = Image.open(img_path)
+    img = img.resize((280, 90))
+    photo = ImageTk.PhotoImage(img)
 
     label_img = ctk.CTkLabel(frame_der, image=photo, text="")
     label_img.image = photo
