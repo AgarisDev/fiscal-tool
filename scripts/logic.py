@@ -28,10 +28,13 @@ def calcular_ingreso_futuro_desde_inputs(CO, ua, ia, deducciones, mes_actual):
     
 
 
-def cargar_csv_y_generar_pdf():
+def cargar_csv_y_generar_pdf(resultado_label):
     ruta = filedialog.askopenfilename(title="Selecciona archivo CSV", filetypes=[("CSV files", "*.csv")])
     if not ruta:
         return None, "Operación cancelada."
+
+    resultado_label.configure(text="Cargando...")
+    resultado_label.update()
 
     df = pd.read_csv(ruta)
 
@@ -176,6 +179,8 @@ def cargar_csv_y_generar_pdf():
         for i, col in enumerate(columnas):
             pdf.cell(col_widths[i], 10, str(row.get(col, ""))[:15], border=1, fill=True)
         pdf.ln()
+
+    resultado_label.configure(text='')
 
     # Guardar el PDF
     ruta_salida = asksaveasfilename(
